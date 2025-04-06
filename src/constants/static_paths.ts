@@ -1,7 +1,7 @@
 type StaticPath = string;
 
 export const DOMAIN_NAME: StaticPath = import.meta.env.PROD
-    ? "https://www.freshjacuzzis.com"
+    ? "https://develop.freshjacuzzis.com"
     : "http://192.168.1.141:4321";
 
 export const CTA_TARGET: StaticPath =

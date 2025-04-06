@@ -13,9 +13,10 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     <div class="product-list" id="product-list">
         {
             products
-                .filter(
-                    ({ availability, visibility }) => availability && visibility
-                )
+                .reduce((arr: Product[], category: Category) => {
+                    return arr.concat(category.products)
+                }, [] as Product[])
+                .filter(({ availability, visibility }) => availability && visibility)
                 .map(async ({ name, id }, index) => {
                     const image =
                         await images[`/src/assets/products/Jacuzzi ${name} - Fresh Jacuzzis.jpeg`]()
