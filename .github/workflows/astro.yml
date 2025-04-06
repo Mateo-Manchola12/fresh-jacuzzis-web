@@ -56,14 +56,15 @@ jobs:
               working-directory: ${{ env.BUILD_PATH }}
             - name: Build with Astro
               run: |
-                  ${{ steps.detect-package-manager.outputs.runner }} astro build
+                  echo "PUBLIC_DOMAIN_NAME=${{ secrets.PUBLIC_DOMAIN_NAME }}" >> .env.production
+                     ${{ steps.detect-package-manager.outputs.runner }} astro build
               working-directory: ${{ env.BUILD_PATH }}
             - name: Upload build artifact
               uses: actions/upload-artifact@v4
               with:
-                name: build
-                include-hidden-files: true
-                path: ${{ env.BUILD_PATH }}/dist/
+                  name: build
+                  include-hidden-files: true
+                  path: ${{ env.BUILD_PATH }}/dist/
 
     deploy:
         needs: build

@@ -1,5 +1,6 @@
 ---
-import { CONTACT_METHODS, SITE_MAP } from "@/constants";
+import { SITE_MAP } from "@constants/site_map";
+import { CONTACT_METHODS } from "@constants/contact_methods";
 ---
 
 <footer role="contentinfo" aria-labelledby="footer-heading" data-aos="fade-up">
@@ -7,7 +8,7 @@ import { CONTACT_METHODS, SITE_MAP } from "@/constants";
     <div class="footer-container">
         <div class="company-info">
             <h3>Fresh Jacuzzis</h3>
-            <p><strong>Dirección:</strong> Calle 93b sur # 50- 231 </p>
+            <p><strong>Dirección:</strong> Calle 93b sur # 50- 231</p>
             {
                 CONTACT_METHODS.filter(({ type }) => type === "direct").map(
                     ({ name, link, value }) => (
@@ -28,10 +29,10 @@ import { CONTACT_METHODS, SITE_MAP } from "@/constants";
             <h3>Mapa del Sitio</h3>
             <ul>
                 {
-                    SITE_MAP.map(({ name, path, description }) => (
+                    SITE_MAP.map(({ name, path, description, clickable }) => (
                         <li>
                             <a
-                                href={path}
+                                href={clickable ? path : "javascript:;"}
                                 aria-label={`Ir a ver ${description} en Fresh Jacuzzis`}
                             >
                                 {name}

@@ -1,7 +1,8 @@
 import { defineConfig } from "astro/config";
 import htaccess from "astro-htaccess";
 import sitemap from "@astrojs/sitemap";
-import { DOMAIN_NAME } from "./src/constants";
+import { DOMAIN_NAME } from "./src/constants/static_paths";
+
 export default defineConfig({
     site: DOMAIN_NAME,
     vite: {

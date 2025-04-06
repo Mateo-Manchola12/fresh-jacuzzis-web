@@ -1,14 +1,10 @@
 ---
-import { SITE_MAP } from "@/constants";
-import Burger from "@/svg/Burger.astro";
-import Xmark from "@/svg/Xmark.astro";
+import { SITE_MAP } from "@constants/site_map";
+import Burger from "@svg/Burger.astro";
+import Xmark from "@svg/Xmark.astro";
 ---
 
-<nav
-    aria-label="Navegación principal"
-    role="navigation"
-    transition:persist
->
+<nav aria-label="Navegación principal" role="navigation" transition:persist>
     <button
         id="burger-button"
         aria-label="Abrir menú"
@@ -30,10 +26,10 @@ import Xmark from "@/svg/Xmark.astro";
             </button>
         </li>
         {
-            SITE_MAP.map(({ name, path, description }) => (
+            SITE_MAP.map(({ name, path, description, clickable }) => (
                 <li>
                     <a
-                        href={path}
+                        href={clickable ? path : "javascript:;"}
                         aria-label={`Ir a ver ${description} en Fresh Jacuzzis`}
                         role="menuitem"
                     >

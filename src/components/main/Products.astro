@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
-import products from "@/assets/products.json";
-import ProductCard from "@/components/main/ProductCard.astro";
+import products from "@assets/products.json";
+import ProductCard from "@components/main/ProductCard.astro";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/products/Jacuzzi * - Fresh Jacuzzis.{jpeg,jpg,png,gif}"

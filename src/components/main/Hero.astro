@@ -1,7 +1,7 @@
 ---
 import { getImage } from "astro:assets";
-import poster from "@/assets/bubbles.jpeg";
-import Cta from "@/components/Cta.astro";
+import poster from "@assets/bubbles.jpeg";
+import Cta from "@components/Cta.astro";
 
 const videoSrc = "/video/bubbles";
 const optimizedPoster = await getImage({ src: poster });
