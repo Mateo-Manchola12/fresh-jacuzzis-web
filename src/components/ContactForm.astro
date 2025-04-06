@@ -126,13 +126,13 @@ const backgroundImage = await getImage({ src: src });
             } else if (!phonePattern.test(phone.value.trim())) {
                 showError(
                     phone,
-                    "Por favor, ingresa un número de teléfono válido (solo dígitos, mínimo 7)."
-                );
+                    "Por favor, ingresa un número de teléfono válido (solo dígitos, mínimo 7).",
+            );
             } else if (!emailPattern.test(email.value.trim())) {
                 showError(
                     email,
-                    "Por favor, ingresa un correo electrónico válido."
-                );
+                    "Por favor, ingresa un correo electrónico válido.",
+            );
             } else if (city.value.trim() === "") {
                 showError(city, "Por favor, ingresa tu ciudad.");
             } else if (message.value.trim() === "") {
@@ -140,8 +140,8 @@ const backgroundImage = await getImage({ src: src });
             } else if (!privacyPolicy.checked) {
                 showError(
                     privacyPolicy,
-                    "Debes aceptar la política de privacidad."
-                );
+                    "Debes aceptar la política de privacidad.",
+            );
             }
 
             // Si todo está correcto, enviamos el formulario
