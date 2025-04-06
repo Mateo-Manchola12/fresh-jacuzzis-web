@@ -53,63 +53,61 @@ const backgroundImage = await getImage({ src: src })
         >
     </div>
 </section>
-<script data-astro-rerun>
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector("form");
+<script>
+    import { $ } from "@/lib/dom.selector"
 
-        form.addEventListener("submit", function (event) {
-            event.preventDefault(); // Evita el envío inmediato
+    document.addEventListener("astro:page-load", function () {
+        const form = $("form") as HTMLFormElement
 
-            let valid = true;
-            const name = document.getElementById("name");
-            const phone = document.getElementById("phone");
-            const email = document.getElementById("email");
-            const city = document.getElementById("city");
-            const message = document.getElementById("message");
-            const privacyPolicy = document.getElementById("privacy_policy");
+        form?.addEventListener("submit", function (event) {
+            event.preventDefault() // Evita el envío inmediato
+
+            let valid = true
+            const name = $("#name") as HTMLInputElement
+            const phone = $("#phone") as HTMLInputElement
+            const email = $("#email") as HTMLInputElement
+            const city = $("#city") as HTMLInputElement
+            const message = $("#message") as HTMLInputElement
+            const privacyPolicy = $("#privacy_policy") as HTMLInputElement
 
             // Expresión regular para validar el correo electrónico
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
             // Expresión regular para validar el teléfono (solo números, mínimo 7 dígitos)
-            const phonePattern = /^\d{7,}$/;
+            const phonePattern = /^\d{7,}$/
 
             // Función para mostrar errores
-            function showError(input, message) {
-                alert(`${message}`);
-                input.focus();
-                valid = false;
+            function showError(input: HTMLInputElement, message: string) {
+                if (input) {
+                    alert(`${message}`)
+                    input.focus()
+                    valid = false
+                }
             }
 
             // Validaciones
-            if (name.value.trim() === "") {
-                showError(name, "Por favor, ingresa tu nombre.");
-            } else if (!phonePattern.test(phone.value.trim())) {
+            if (!name || name.value.trim() === "") {
+                showError(name, "Por favor, ingresa tu nombre.")
+            } else if (!phone || !phonePattern.test(phone.value.trim())) {
                 showError(
                     phone,
                     "Por favor, ingresa un número de teléfono válido (solo dígitos, mínimo 7).",
-            );
-            } else if (!emailPattern.test(email.value.trim())) {
-                showError(
-                    email,
-                    "Por favor, ingresa un correo electrónico válido.",
-            );
-            } else if (city.value.trim() === "") {
-                showError(city, "Por favor, ingresa tu ciudad.");
-            } else if (message.value.trim() === "") {
-                showError(message, "Por favor, escribe un mensaje.");
-            } else if (!privacyPolicy.checked) {
-                showError(
-                    privacyPolicy,
-                    "Debes aceptar la política de privacidad.",
-            );
+                )
+            } else if (!email || !emailPattern.test(email.value.trim())) {
+                showError(email, "Por favor, ingresa un correo electrónico válido.")
+            } else if (!city || city.value.trim() === "") {
+                showError(city, "Por favor, ingresa tu ciudad.")
+            } else if (!message || message.value.trim() === "") {
+                showError(message, "Por favor, escribe un mensaje.")
+            } else if (!privacyPolicy || !privacyPolicy.checked) {
+                showError(privacyPolicy, "Debes aceptar la política de privacidad.")
             }
 
             // Si todo está correcto, enviamos el formulario
             if (valid) {
-                form.submit();
+                form?.submit()
             }
-        });
-    });
+        })
+    })
 </script>
 <style>
     section {
@@ -123,7 +121,7 @@ const backgroundImage = await getImage({ src: src })
     }
     .text {
         margin: auto;
-            margin-top: 2rem;
+        margin-top: 2rem;
     }
     form {
         min-width: 30%;

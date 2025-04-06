@@ -110,18 +110,25 @@ import NavMenu from "./NavMenu.astro"
     }
 </style>
 
-<script defer type="module">
-    const burgerButton = document.getElementById("burger-button");
-    const xmarkButton = document.getElementById("xmark-button");
-    const menu = document.getElementById("menu");
+<script>
+    import { $, $$ } from "@/lib/dom.selector"
 
-    function toggleMenu(isOpen) {
-        menu?.classList.toggle("open", isOpen);
-        burgerButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        menu?.setAttribute("aria-hidden", isOpen ? "false" : "true");
-    }
+    document.addEventListener("astro:page-load", () => {
+        const burgerButton = $("#burger-button")
+        const xmarkButton = $("#xmark-button")
+        const menu = $("#menu")
+        const options = $$("a.enabled")
 
-    burgerButton?.addEventListener("click", () => toggleMenu(true));
-    xmarkButton?.addEventListener("click", () => toggleMenu(false));
-    menu?.addEventListener("click", () => toggleMenu(false));
+        function toggleMenu(isOpen: boolean) {
+            menu?.classList.toggle("open", isOpen)
+            burgerButton?.setAttribute("aria-expanded", isOpen ? "true" : "false")
+            menu?.setAttribute("aria-hidden", isOpen ? "false" : "true")
+        }
+
+        burgerButton?.addEventListener("click", () => toggleMenu(true))
+        xmarkButton?.addEventListener("click", () => toggleMenu(false))
+        options.forEach((option) => {
+            option.addEventListener("click", () => toggleMenu(false))
+        })
+    })
 </script>

@@ -82,12 +82,13 @@ const optimizedPoster = await getImage({ src: poster })
         margin: 0;
     }
 </style>
-<script type="module">
-    document.addEventListener("astro:after-swap", () => {
-        const video = document.querySelector(".hero-video");
+<script>
+    import { $ } from "@/lib/dom.selector"
+
+    document.addEventListener("astro:page-load", () => {
+        const video = $(".hero-video") as HTMLVideoElement
         if (video) {
-            video
-                .play()
+            video.play()
         }
-    });
+    })
 </script>
