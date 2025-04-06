@@ -26,6 +26,7 @@ import { DOMAIN_NAME } from "@constants/static_paths"
 </section>
 <style>
     section {
+        font-size: medium;
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -63,12 +64,13 @@ import { DOMAIN_NAME } from "@constants/static_paths"
     a {
         border: 1px solid var(--accent-color);
         color: var(--accent-color);
-        padding: .5rem 1rem;
-        margin-top: auto;
+        padding: 0.5rem 1rem;
+        margin-top: 2rem;
     }
     @media (min-width: 800px) {
         section {
             flex-direction: row;
+            font-size: large;
         }
         picture {
             height: auto;
@@ -77,48 +79,55 @@ import { DOMAIN_NAME } from "@constants/static_paths"
             width: 60vw;
             height: 100%;
         }
-    }
-</style>
-<script type="module" data-astro-rerun>
-    const img = document.querySelector("img");
-    let maxDisplacement = 0;
-    let ticking = false;
-
-    function updateImagePosition() {
-        if (!maxDisplacement) return;
-
-        const newPosition = window.scrollY * 2;
-        const boundedPosition = Math.min(newPosition, maxDisplacement);
-
-        img.style.objectPosition = `top 0 left -${boundedPosition}px`;
-        ticking = false;
-    }
-    document.addEventListener("astro:page-load", () => {
-        maxDisplacement =
-            (img.naturalWidth * img.clientHeight) / img.naturalHeight -
-            img.clientWidth;
-        maxDisplacement = maxDisplacement > 100 ? maxDisplacement : null;
-    });
-
-    function handleScroll() {
-        if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(updateImagePosition);
+        a {
+            margin-top: auto;
         }
     }
+</style>
+<script>
+    import { $ } from "@/lib/dom.selector"
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            if (entries[0].isIntersecting) {
-                document.addEventListener("scroll", handleScroll, {
-                    passive: true,
-                });
-            } else {
-                document.removeEventListener("scroll", handleScroll);
+    document.addEventListener("astro:page-load", () => {
+        const img = $("img") as HTMLImageElement
+        let maxDisplacement = 0
+        let ticking = false
+
+        function updateImagePosition() {
+            if (!maxDisplacement || !img) return
+
+            const newPosition = window.scrollY * 2
+            const boundedPosition = Math.min(newPosition, maxDisplacement)
+
+            img.style.objectPosition = `top 0 left -${boundedPosition}px`
+            ticking = false
+        }
+
+        function calculateMaxDisplacement() {
+            if (!img) return
+            maxDisplacement =
+                (img.naturalWidth * img.clientHeight) / img.naturalHeight - img.clientWidth
+            maxDisplacement = maxDisplacement > 100 ? maxDisplacement : 0
+        }
+
+        function handleScroll() {
+            if (!ticking) {
+                ticking = true
+                requestAnimationFrame(updateImagePosition)
             }
-        },
-        { threshold: 0.1 },
-);
+        }
 
-    observer.observe(img);
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    calculateMaxDisplacement()
+                    document.addEventListener("scroll", handleScroll, { passive: true })
+                } else {
+                    document.removeEventListener("scroll", handleScroll)
+                }
+            },
+            { threshold: 0.1 },
+        )
+
+        if (img) observer.observe(img)
+    })
 </script>

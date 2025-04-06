@@ -6,25 +6,21 @@ const RAW_SITE_MAP: Page[] = [
         name: "Inicio",
         slug: "",
         description: "La pagina de inicio",
-        clickable: true,
     },
     {
         name: "Productos",
         slug: "productos",
         description: "Nuestros productos",
-        clickable: false,
         subpages: [
             {
-                name: "Jacuzzis",
+                name: "Nuestros Jacuzzis",
                 slug: "jacuzzis",
-                description: "La pagina de inicio",
-                clickable: true,
+                description: "Nuestra sección de jacuzzis",
             },
             {
-                name: "Hogar",
+                name: "Para el Hogar",
                 slug: "hogar",
-                description: "La pagina de inicio",
-                clickable: true,
+                description: "Nuestra sección para el hogar",
             },
         ],
     },
@@ -32,13 +28,11 @@ const RAW_SITE_MAP: Page[] = [
         name: "Nosotros",
         slug: "nosotros",
         description: "Mas sobre nosotros",
-        clickable: true,
     },
     {
         name: "Contáctanos",
         slug: "contacto",
         description: "Nuestra información de contacto",
-        clickable: true,
     },
 ]
 
@@ -50,6 +44,7 @@ const buildPaths = (sites: Page[], basePath: string = DOMAIN_NAME): Page[] => {
             return {
                 ...page,
                 path: fullPath,
+                clickable: false,
                 subpages: buildPaths(page.subpages, fullPath),
             }
 
@@ -61,4 +56,4 @@ const buildPaths = (sites: Page[], basePath: string = DOMAIN_NAME): Page[] => {
     })
 }
 
-export const SITE_MAP = buildPaths(RAW_SITE_MAP);
+export const SITE_MAP = buildPaths(RAW_SITE_MAP)

@@ -18,9 +18,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                 )
                 .map(async ({ name, id }, index) => {
                     const image =
-                        await images[
-                            `/src/assets/products/Jacuzzi ${name} - Fresh Jacuzzis.jpeg`
-                        ]();
+                        await images[`/src/assets/products/Jacuzzi ${name} - Fresh Jacuzzis.jpeg`]()
                     return (
                         <ProductCard
                             aosDelay={index * 200}
@@ -28,7 +26,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                             id={id}
                             image={image.default}
                         />
-                    );
+                    )
                 })
         }
     </div>
