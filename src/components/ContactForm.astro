@@ -1,16 +1,16 @@
 ---
-import { DOMAIN_NAME } from "@constants/static_paths";
-import { getImage } from "astro:assets";
+import { DOMAIN_NAME } from "@constants/static_paths"
+import { getImage } from "astro:assets"
 
 interface Props {
-    src: ImageMetadata;
-    dataAos: {};
-    classNames?: string;
+    src: ImageMetadata
+    dataAos: {}
+    classNames?: string
 }
 
-const { src, dataAos, classNames } = Astro.props;
+const { src, dataAos, classNames } = Astro.props
 
-const backgroundImage = await getImage({ src: src });
+const backgroundImage = await getImage({ src: src })
 ---
 
 <section
@@ -23,63 +23,23 @@ const backgroundImage = await getImage({ src: src });
         background-size: cover;
         `
 >
-    <form
-        action="https://formsubmit.co/f1bc4ea86f82425b6b1bca027093e0ae"
-        method="POST"
-    >
+    <form action="https://formsubmit.co/f1bc4ea86f82425b6b1bca027093e0ae" method="POST">
         <fieldset>
             <legend>Contáctanos</legend>
 
-            <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                placeholder="Nombre"
-            />
-            <input
-                type="tel"
-                id="phone"
-                name="phone"
-                required
-                placeholder="Teléfono"
-            />
-            <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="Correo"
-            />
-            <input
-                type="text"
-                id="city"
-                name="city"
-                required
-                placeholder="Ciudad"
-            />
-            <textarea
-                id="message"
-                name="message"
-                required
-                placeholder="Déjanos tu mensaje"></textarea>
+            <input type="text" id="name" name="name" required placeholder="Nombre" />
+            <input type="tel" id="phone" name="phone" required placeholder="Teléfono" />
+            <input type="email" id="email" name="email" required placeholder="Correo" />
+            <input type="text" id="city" name="city" required placeholder="Ciudad" />
+            <textarea id="message" name="message" required placeholder="Déjanos tu mensaje"
+            ></textarea>
 
             <input type="hidden" name="_next" value={DOMAIN_NAME} />
 
-            <button type="submit">Enviar</button><label
-                for="privacy_policy"
-                class="privacy_policy"
-            >
-                <input
-                    type="checkbox"
-                    name="privacy_policy"
-                    id="privacy_policy"
-                    required
-                    checked
-                />
-                Acepto la <a
-                    href={`${DOMAIN_NAME}/politica-privacidad`}
-                    target="_blank">política de privacidad</a
+            <button type="submit">Enviar</button><label for="privacy_policy" class="privacy_policy">
+                <input type="checkbox" name="privacy_policy" id="privacy_policy" required checked />
+                Acepto la <a href={`${DOMAIN_NAME}/politica-privacidad`} target="_blank"
+                    >política de privacidad</a
                 >
             </label>
         </fieldset>
@@ -88,8 +48,8 @@ const backgroundImage = await getImage({ src: src });
     <div class="text">
         <h2>Para un servicio excepcional, queremos conocerte mejor</h2>
         <span
-            >Déjanos tus datos y nuestro equipo se pondrá en contacto contigo
-            para brindarte la mejor atención.</span
+            >Déjanos tus datos y nuestro equipo se pondrá en contacto contigo para brindarte la
+            mejor atención.</span
         >
     </div>
 </section>
@@ -163,17 +123,7 @@ const backgroundImage = await getImage({ src: src });
     }
     .text {
         margin: auto;
-    }
-
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        border: 0;
-        clip: rect(0, 0, 0, 0);
-        overflow: hidden;
+            margin-top: 2rem;
     }
     form {
         min-width: 30%;

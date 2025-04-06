@@ -1,14 +1,11 @@
 ---
-import FreshJacuzzisLogo from "@svg/FreshJacuzzisLogo.astro";
-import HeaderNav from "@components/HeaderNav.astro";
-import { DOMAIN_NAME } from "@constants/static_paths";
+import FreshJacuzzisLogo from "@svg/FreshJacuzzisLogo.astro"
+import HeaderNav from "@components/HeaderNav.astro"
+import { DOMAIN_NAME } from "@constants/static_paths"
 ---
 
 <header role="banner" aria-label="Encabezado de Fresh Jacuzzis">
-    <a
-        href={DOMAIN_NAME}
-        aria-label="Ir a la página principal de Fresh Jacuzzis"
-    >
+    <a href={DOMAIN_NAME} aria-label="Ir a la página principal de Fresh Jacuzzis">
         <FreshJacuzzisLogo size={60} />
         <h1 aria-label="Título de la página">fresh</h1>
     </a>

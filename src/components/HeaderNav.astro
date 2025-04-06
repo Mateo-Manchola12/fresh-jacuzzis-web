@@ -1,16 +1,12 @@
 ---
-import { SITE_MAP } from "@constants/site_map";
-import Burger from "@svg/Burger.astro";
-import Xmark from "@svg/Xmark.astro";
+import { SITE_MAP } from "@constants/site_map"
+import Burger from "@svg/Burger.astro"
+import Xmark from "@svg/Xmark.astro"
+import NavMenu from "./NavMenu.astro"
 ---
 
-<nav aria-label="Navegación principal" role="navigation" transition:persist>
-    <button
-        id="burger-button"
-        aria-label="Abrir menú"
-        aria-controls="menu"
-        aria-expanded="false"
-    >
+<nav class="nav" aria-label="Navegación principal" role="navigation" transition:persist>
+    <button id="burger-button" aria-label="Abrir menú" aria-controls="menu" aria-expanded="false">
         <Burger size={30} />
     </button>
 

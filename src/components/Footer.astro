@@ -1,6 +1,7 @@
 ---
-import { SITE_MAP } from "@constants/site_map";
-import { CONTACT_METHODS } from "@constants/contact_methods";
+import { SITE_MAP } from "@constants/site_map"
+import { CONTACT_METHODS } from "@constants/contact_methods"
+import FooterSiteMap from "./FooterSiteMap.astro"
 ---
 
 <footer role="contentinfo" aria-labelledby="footer-heading" data-aos="fade-up">
@@ -14,14 +15,11 @@ import { CONTACT_METHODS } from "@constants/contact_methods";
                     ({ name, link, value }) => (
                         <p>
                             <strong>{name}</strong>
-                            <a
-                                href={link}
-                                aria-label={`Conatacta al ${name} de Fresh Jacuzzis`}
-                            >
+                            <a href={link} aria-label={`Conatacta al ${name} de Fresh Jacuzzis`}>
                                 {value}
                             </a>
                         </p>
-                    )
+                    ),
                 )
             }
         </div>
@@ -46,25 +44,20 @@ import { CONTACT_METHODS } from "@constants/contact_methods";
             <h3>Síguenos</h3>
             <ul>
                 {
-                    CONTACT_METHODS.filter(
-                        ({ type }) => type === "external"
-                    ).map(({ name, link }) => (
+                    CONTACT_METHODS.filter(({ type }) => type === "external").map(
+                        ({ name, link }) => (
                         <li>
-                            <a
-                                href={link}
-                                aria-label={`Ir a el ${name} de Fresh Jacuzzis`}
-                            >
+                                <a href={link} aria-label={`Ir a el ${name} de Fresh Jacuzzis`}>
                                 {name}
                             </a>
                         </li>
-                    ))
+                        ),
+                    )
                 }
             </ul>
         </div>
         <div class="privacy-policy">
-            <a
-                href="/politica-privacidad"
-                aria-label="Leer política de privacidad"
+            <a href="/politica-privacidad" aria-label="Leer política de privacidad"
                 >Política de Privacidad</a
             >
         </div>

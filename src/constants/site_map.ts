@@ -1,5 +1,5 @@
-import { DOMAIN_NAME } from "@constants/static_paths";
-import type { Page } from "@types/pageTypes";
+import { DOMAIN_NAME } from "@constants/static_paths"
+import type { Page } from "@types/pageTypes"
 
 const RAW_SITE_MAP: Page[] = [
     {
@@ -40,27 +40,25 @@ const RAW_SITE_MAP: Page[] = [
         description: "Nuestra información de contacto",
         clickable: true,
     },
-];
+]
 
-const buildPaths = (
-    sitemap: Page[],
-    basePath: string = DOMAIN_NAME
-): Page[] => {
-    return sitemap.map((page) => {
-        const fullPath = `${basePath}/${page.slug}`;
+const buildPaths = (sites: Page[], basePath: string = DOMAIN_NAME): Page[] => {
+    return sites.map((page) => {
+        const fullPath = `${basePath}/${page.slug}`
 
         if ("subpages" in page)
             return {
                 ...page,
                 path: fullPath,
                 subpages: buildPaths(page.subpages, fullPath),
-            };
+            }
 
         return {
             ...page,
             path: fullPath,
-        };
-    });
-};
+            clickable: true,
+        }
+    })
+}
 
 export const SITE_MAP = buildPaths(RAW_SITE_MAP);
