@@ -17,6 +17,11 @@ const RAW_SITE_MAP: Page[] = [
                 slug: "jacuzzis",
                 description: "Nuestra sección de jacuzzis",
             },
+            {
+                name: "Para el hogar",
+                slug: "hogar",
+                description: "Nuestra sección de jacuzzis",
+            },
         ],
     },
     {
