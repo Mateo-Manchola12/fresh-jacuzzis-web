@@ -1,0 +1,62 @@
+---
+import Capacity from "@/svg/Capacity.astro";
+import Diameter from "@/svg/Diameter.astro";
+import Height from "@/svg/Height.astro";
+import Size from "@/svg/Size.astro";
+
+const { product } = Astro.props;
+---
+
+<ul transition:name={`jacuzzi-${product.id}-specs`}>
+    {
+        product.capacity && (
+            <li>
+                <Capacity size={30} />
+                Capacidad:
+                {product.capacity}
+                personas
+            </li>
+        )
+    }
+    {
+        product.height && (
+            <li>
+                <Height size={30} />
+                Altura:
+                {(product.height / 100).toFixed(2)} m
+            </li>
+        )
+    }
+    {
+        product.width && product.depth && (
+            <li>
+                <Size size={30} />
+                Tamaño:
+                {(product.width / 100).toFixed(2)} m x{" "}
+                {(product.depth / 100).toFixed(2)} m
+            </li>
+        )
+    }
+    {
+        product.diameter && (
+            <li>
+                <Diameter size={30} />
+                Diámetro:
+                {(product.diameter / 100).toFixed(2)} m
+            </li>
+        )
+    }
+</ul>
+<style>
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+    }
+    li {
+        display: inline-flex;
+        gap: 1rem;
+    }
+</style>
