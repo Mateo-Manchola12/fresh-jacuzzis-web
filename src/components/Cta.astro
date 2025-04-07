@@ -1,0 +1,20 @@
+---
+import { CTA_TARGET } from "@/constants";
+
+const { ...rest } = Astro.props;
+---
+
+<a {...rest} href={CTA_TARGET}>
+    <slot />
+</a>
+<style>
+    a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--secondary-dark);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+</style>

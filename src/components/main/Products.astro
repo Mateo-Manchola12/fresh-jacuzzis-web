@@ -1,0 +1,51 @@
+---
+import type { ImageMetadata } from "astro";
+import products from "@/assets/products.json";
+import ProductCard from "@/components/main/ProductCard.astro";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/products/Jacuzzi * - Fresh Jacuzzis.{jpeg,jpg,png,gif}"
+);
+---
+
+<section aria-label="Slider de productos" class="product-slider">
+    <div class="product-list" id="product-list">
+        {
+            products
+                .filter(
+                    ({ availability, visibility }) => availability && visibility
+                )
+                .map(async ({ name, id }, index) => {
+                    const image =
+                        await images[
+                            `/src/assets/products/Jacuzzi ${name} - Fresh Jacuzzis.jpeg`
+                        ]();
+                    return (
+                        <ProductCard
+                            aosDelay={index * 200}
+                            name={name}
+                            id={id}
+                            image={image.default}
+                        />
+                    );
+                })
+        }
+    </div>
+</section>
+
+<style>
+    .product-slider {
+        display: flex;
+        max-width: calc(100vw - 20px);
+        overflow: auto;
+        gap: 2rem;
+        padding: 1rem 2rem;
+        scroll-snap-align: start;
+        scroll-snap-type: x mandatory;
+    }
+
+    .product-list {
+        display: flex;
+        gap: 2rem;
+    }
+</style>

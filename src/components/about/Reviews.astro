@@ -1,0 +1,84 @@
+---
+const reviews = [
+    {
+        name: "Carlos Muñoz",
+        review: "La mejor inversión que he hecho. El jacuzzi no solo es hermoso, sino que la calidad se nota en cada detalle. Además, la instalación fue rápida y sin complicaciones. ¡100% recomendado!",
+    },
+    {
+        name: "Diana Restrepo",
+        review: "Desde el primer contacto, la atención fue excelente. Me asesoraron en todo momento y el resultado superó mis expectativas. Se nota que es un producto con estándares de lujo.",
+    },
+    {
+        name: "Felipe Martínez",
+        review: "Increíble resistencia y diseño. Vivo en la costa y mi jacuzzi sigue como nuevo a pesar del clima. Además, requiere muy poco mantenimiento gracias a su material. ¡No puedo estar más feliz!",
+    },
+    {
+        name: "Paola Giraldo",
+        review: "Quería un jacuzzi personalizado y Fresh Jacuzzis logró exactamente lo que soñaba. El equipo fue muy profesional y cumplieron con todo lo prometido. Un servicio impecable.",
+    },
+    {
+        name: "Julián Velásquez",
+        review: "Me sorprendió lo rápido que fue todo el proceso, desde la compra hasta la instalación. No tuve que preocuparme por nada y ahora disfruto de momentos de relajación en casa todos los días.",
+    },
+    {
+        name: "Andrea Ramírez",
+        review: "Soy arquitecta y siempre recomiendo Fresh Jacuzzis a mis clientes. Su calidad y diseño superan con creces otras opciones del mercado. Sin duda, una marca que inspira confianza.",
+    },
+];
+---
+
+<section>
+    <h2>Experiencias de quienes confiaron en nosotros</h2>
+    {
+        reviews.map(({ name, review }) => (
+            <article>
+                <blockquote>
+                    "{review}"<span>- {name}</span>
+                </blockquote>
+            </article>
+        ))
+    }
+</section>
+<style>
+    section {
+        box-shadow: -5px 0 10px #00000099;
+        display: flex;
+        gap: 2rem;
+        overflow: auto;
+        padding: 2rem;
+        background: linear-gradient(#00000099, #00000099), var(--primary-dark);
+        color: var(--accent-light);
+        align-items: stretch;
+        scroll-snap-align: start;
+        scroll-snap-type: x mandatory;
+        margin-bottom: 0;
+    }
+    h2 {
+        flex: 1 0 300px;
+        scroll-snap-align: center;
+        align-self: center;
+    }
+    article {
+        flex: 1 0 500px;
+        text-align: left;
+        display: flex;
+        scroll-snap-align: center;
+        max-width: 80vw;
+    }
+    blockquote {
+        height: 100%;
+        font-style: italic;
+        margin: 0 0 1rem 0;
+        padding: 0.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    span {
+        font-weight: bold;
+        color: var(--accent-dark);
+    }
+    section::-webkit-scrollbar-track {
+        background: linear-gradient(#00000099, #00000099), var(--primary-dark), #f1f1f1;
+    }
+</style>
