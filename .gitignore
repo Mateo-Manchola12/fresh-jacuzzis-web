@@ -3,7 +3,7 @@ dist/
 
 # generated types
 .astro/
-.env.production
+.env.development
 
 # dependencies
 node_modules/
