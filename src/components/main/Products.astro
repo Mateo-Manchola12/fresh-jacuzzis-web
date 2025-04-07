@@ -14,17 +14,23 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
         {
             products
                 .reduce((arr: Product[], category: Category) => {
-                    return arr.concat(category.products)
+                    return arr.concat(
+                        category.products.map((product) => ({
+                            ...product,
+                            category: category.category,
+                        })),
+                    )
                 }, [] as Product[])
                 .filter(({ availability, visibility }) => availability && visibility)
-                .map(async ({ name, id }, index) => {
+                .map(async (product, index) => {
                     const image =
-                        await images[`/src/assets/products/Jacuzzi ${name} - Fresh Jacuzzis.jpeg`]()
+                        await images[
+                            `/src/assets/products/Jacuzzi ${product.name} - Fresh Jacuzzis.jpeg`
+                        ]()
                     return (
                         <ProductCard
                             aosDelay={index * 200}
-                            name={name}
-                            id={id}
+                            product={product}
                             image={image.default}
                         />
                     )

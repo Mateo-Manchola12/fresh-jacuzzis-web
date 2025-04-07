@@ -3,7 +3,60 @@
         "category": "hogar",
         "title": "Nuestra selección para el hogar",
         "description": "Nuestros lavaderos de fibra de vidrio están diseñados para brindar una solución práctica, resistente y duradera, ideal para las condiciones del hogar colombiano. Fabricados con un compuesto de filamentos de vidrio entrelazados y resina de poliéster, este material ofrece una destacada resistencia a la tracción, torsión y otros esfuerzos mecánicos. Gracias a sus propiedades, es inmune a la oxidación, a la corrosión y al deterioro por humedad, lo que se traduce en un sistema ligero, con alta relación resistencia-peso, bajo mantenimiento y excelente aislamiento térmico y acústico.",
-        "products": []
+        "products": [
+            {
+                "id": "Z8X4YQW7",
+                "name": "NIRIXIA",
+                "capacity": 1,
+                "height": 300,
+                "width": 174,
+                "depth": 84,
+                "specs": [
+                    {
+                        "title": "Básico",
+                        "id": "basic",
+                        "list": [
+                            "3 micro jets",
+                            "1 motobomba de hidromasajes",
+                            "1 cascada plana",
+                            "1 luz led de alta definición multicolor (cromoterapia)",
+                            "1 mantenedor eléctrico",
+                            "1 desagüe"
+                        ]
+                    },
+                    {
+                        "title": "Medio",
+                        "id": "medium",
+                        "list": [
+                            "2 hidrojets cromados (hidroterapia)",
+                            "4 micro jets",
+                            "1 motobomba de hidromasajes",
+                            "1 cascada plana",
+                            "1 rama lx10 luces",
+                            "1 mantenedor eléctrico",
+                            "1 cabecero",
+                            "1 desagüe rebose"
+                        ]
+                    },
+                    {
+                        "title": "Completo",
+                        "id": "full",
+                        "list": [
+                            "2 hidrojets cromados (hidroterapia)",
+                            "4 micro jets",
+                            "1 motobomba de hidromasajes",
+                            "1 ramal x 10 luces",
+                            "1 mantenedor eléctrico",
+                            "1 cabecero",
+                            "1 tele ducha",
+                            "1 desagüe"
+                        ]
+                    }
+                ],
+                "availability": true,
+                "visibility": false
+            }
+        ]
     },
     {
         "category": "jacuzzis",
@@ -181,7 +234,7 @@
                     }
                 ],
                 "availability": true,
-                "visibility": true
+                "visibility": false
             },
             {
                 "id": "A7X9PLQ3",
@@ -803,58 +856,6 @@
                             "1 calentador a gas de 16L",
                             "1 chasis",
                             "4 cabeceros"
-                        ]
-                    }
-                ],
-                "availability": true,
-                "visibility": false
-            },
-            {
-                "id": "Z8X4YQW7",
-                "name": "NIRIXIA",
-                "capacity": 1,
-                "height": 300,
-                "width": 174,
-                "depth": 84,
-                "specs": [
-                    {
-                        "title": "Básico",
-                        "id": "basic",
-                        "list": [
-                            "3 micro jets",
-                            "1 motobomba de hidromasajes",
-                            "1 cascada plana",
-                            "1 luz led de alta definición multicolor (cromoterapia)",
-                            "1 mantenedor eléctrico",
-                            "1 desagüe"
-                        ]
-                    },
-                    {
-                        "title": "Medio",
-                        "id": "medium",
-                        "list": [
-                            "2 hidrojets cromados (hidroterapia)",
-                            "4 micro jets",
-                            "1 motobomba de hidromasajes",
-                            "1 cascada plana",
-                            "1 rama lx10 luces",
-                            "1 mantenedor eléctrico",
-                            "1 cabecero",
-                            "1 desagüe rebose"
-                        ]
-                    },
-                    {
-                        "title": "Completo",
-                        "id": "full",
-                        "list": [
-                            "2 hidrojets cromados (hidroterapia)",
-                            "4 micro jets",
-                            "1 motobomba de hidromasajes",
-                            "1 ramal x 10 luces",
-                            "1 mantenedor eléctrico",
-                            "1 cabecero",
-                            "1 tele ducha",
-                            "1 desagüe"
                         ]
                     }
                 ],

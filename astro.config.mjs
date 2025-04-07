@@ -1,7 +1,12 @@
-import { defineConfig } from "astro/config";
-import htaccess from "astro-htaccess";
-import sitemap from "@astrojs/sitemap";
-import { DOMAIN_NAME } from "./src/constants/static_paths";
+import { defineConfig } from "astro/config"
+import htaccess from "astro-htaccess"
+import sitemap from "@astrojs/sitemap"
+import { DOMAIN_NAME, INDEXABLE } from "./src/constants/static_paths"
+import dotenv from "dotenv"
+
+const mode = process.env.NODE_ENV
+
+dotenv.config({ path: `.env.${mode}` })
 
 export default defineConfig({
     site: DOMAIN_NAME,
@@ -15,7 +20,7 @@ export default defineConfig({
         htaccess({
             generateHtaccessFile: true,
             errorPages: [{ code: 404, document: "/404" }],
-            customRules: [
+            customRules: INDEXABLE && [
                 `ExpiresByType image/jpg "access plus 1 year"`,
                 `ExpiresByType image/jpeg "access plus 1 year"`,
                 `ExpiresByType image/png "access plus 1 year"`,
@@ -34,6 +39,6 @@ export default defineConfig({
                 `RewriteRule ^(.*)$ https://freshjacuzzis.com/$1 [L,R=301]`,
             ],
         }),
-        sitemap(),
+        INDEXABLE && sitemap(),
     ],
-});
+})

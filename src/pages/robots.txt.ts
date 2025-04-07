@@ -1,13 +1,31 @@
-import type { APIRoute } from "astro";
+import type { APIRoute } from "astro"
+import { DOMAIN_NAME, INDEXABLE } from "@/constants/static_paths"
 
-const getRobotsTxt = (sitemapURL: URL) => `
+console.log("robots", DOMAIN_NAME, INDEXABLE)
+
+const getRobotsTxt = (sitemapURL: URL): string => {
+    if (!INDEXABLE) {
+        return `
+User-agent: *
+Disallow: /
+`
+    }
+
+    return `
 User-agent: *
 Allow: /
 
 Sitemap: ${sitemapURL.href}
-`;
+`
+}
 
 export const GET: APIRoute = ({ site }) => {
-    const sitemapURL = new URL("sitemap-index.xml", site);
-    return new Response(getRobotsTxt(sitemapURL));
-};
+    const sitemapURL = new URL("sitemap-index.xml", site)
+    const body = getRobotsTxt(sitemapURL)
+
+    return new Response(body, {
+        headers: {
+            "Content-Type": "text/plain",
+        },
+    })
+}
