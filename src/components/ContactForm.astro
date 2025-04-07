@@ -1,0 +1,246 @@
+---
+import { DOMAIN_NAME } from "@/constants";
+import { getImage } from "astro:assets";
+
+interface Props {
+    src: ImageMetadata;
+    dataAos: {};
+    classNames?: string;
+}
+
+const { src, dataAos, classNames } = Astro.props;
+
+const backgroundImage = await getImage({ src: src });
+---
+
+<section
+    class={classNames}
+    {...dataAos}
+    style=`
+        background: #00000099;
+        background: linear-gradient(#00000099, #00000099), url("${backgroundImage.src}");
+        background-position: bottom right;
+        background-size: cover;
+        `
+>
+    <form
+        action="https://formsubmit.co/f1bc4ea86f82425b6b1bca027093e0ae"
+        method="POST"
+    >
+        <fieldset>
+            <legend>Contáctanos</legend>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Nombre"
+            />
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder="Teléfono"
+            />
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Correo"
+            />
+            <input
+                type="text"
+                id="city"
+                name="city"
+                required
+                placeholder="Ciudad"
+            />
+            <textarea
+                id="message"
+                name="message"
+                required
+                placeholder="Déjanos tu mensaje"></textarea>
+
+            <input type="hidden" name="_next" value={DOMAIN_NAME} />
+
+            <button type="submit">Enviar</button><label
+                for="privacy_policy"
+                class="privacy_policy"
+            >
+                <input
+                    type="checkbox"
+                    name="privacy_policy"
+                    id="privacy_policy"
+                    required
+                    checked
+                />
+                Acepto la <a
+                    href={`${DOMAIN_NAME}/politica-privacidad`}
+                    target="_blank">política de privacidad</a
+                >
+            </label>
+        </fieldset>
+    </form>
+
+    <div class="text">
+        <h2>Para un servicio excepcional, queremos conocerte mejor</h2>
+        <span
+            >Déjanos tus datos y nuestro equipo se pondrá en contacto contigo
+            para brindarte la mejor atención.</span
+        >
+    </div>
+</section>
+<script data-astro-rerun>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Evita el envío inmediato
+
+            let valid = true;
+            const name = document.getElementById("name");
+            const phone = document.getElementById("phone");
+            const email = document.getElementById("email");
+            const city = document.getElementById("city");
+            const message = document.getElementById("message");
+            const privacyPolicy = document.getElementById("privacy_policy");
+
+            // Expresión regular para validar el correo electrónico
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // Expresión regular para validar el teléfono (solo números, mínimo 7 dígitos)
+            const phonePattern = /^\d{7,}$/;
+
+            // Función para mostrar errores
+            function showError(input, message) {
+                alert(`${message}`);
+                input.focus();
+                valid = false;
+            }
+
+            // Validaciones
+            if (name.value.trim() === "") {
+                showError(name, "Por favor, ingresa tu nombre.");
+            } else if (!phonePattern.test(phone.value.trim())) {
+                showError(
+                    phone,
+                    "Por favor, ingresa un número de teléfono válido (solo dígitos, mínimo 7)."
+                );
+            } else if (!emailPattern.test(email.value.trim())) {
+                showError(
+                    email,
+                    "Por favor, ingresa un correo electrónico válido."
+                );
+            } else if (city.value.trim() === "") {
+                showError(city, "Por favor, ingresa tu ciudad.");
+            } else if (message.value.trim() === "") {
+                showError(message, "Por favor, escribe un mensaje.");
+            } else if (!privacyPolicy.checked) {
+                showError(
+                    privacyPolicy,
+                    "Debes aceptar la política de privacidad."
+                );
+            }
+
+            // Si todo está correcto, enviamos el formulario
+            if (valid) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<style>
+    section {
+        color: var(--accent-light);
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .privacy_policy {
+        font-size: small;
+    }
+    .text {
+        margin: auto;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+    }
+    form {
+        min-width: 30%;
+        padding: 4rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+    fieldset {
+        /* padding: 0 10%; */
+        border: none;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.4rem;
+    }
+    input,
+    textarea,
+    button {
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Oxygen,
+            Ubuntu,
+            Cantarell,
+            "Open Sans",
+            "Helvetica Neue",
+            sans-serif;
+        padding: 10px;
+        background-color: #ffffffcc;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+    legend {
+        font-size: xx-large;
+        font-weight: 600;
+    }
+    button {
+        background: none;
+        color: var(--accent-light);
+        border: 1px var(--accent-light) solid;
+        font-size: large;
+    }
+    @media (min-width: 800px) {
+        .text {
+            width: 30%;
+        }
+        form {
+            margin-left: 10%;
+            max-width: 40%;
+        }
+        section {
+            flex-direction: row;
+        }
+    }
+    @media (min-width: 1200px) {
+        form {
+            max-width: 30%;
+        }
+        fieldset {
+            padding: 0 10%;
+        }
+    }
+</style>

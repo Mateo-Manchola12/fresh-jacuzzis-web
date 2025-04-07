@@ -1,0 +1,136 @@
+---
+import { SITE_MAP } from "@/constants";
+import Burger from "@/svg/Burger.astro";
+import Xmark from "@/svg/Xmark.astro";
+---
+
+<nav
+    aria-label="Navegación principal"
+    role="navigation"
+    transition:persist
+>
+    <button
+        id="burger-button"
+        aria-label="Abrir menú"
+        aria-controls="menu"
+        aria-expanded="false"
+    >
+        <Burger size={30} />
+    </button>
+
+    <ul id="menu" aria-hidden="true" role="menu">
+        <li role="none">
+            <button
+                id="xmark-button"
+                aria-label="Cerrar menú"
+                aria-controls="menu"
+                aria-expanded="true"
+            >
+                <Xmark size={32} />
+            </button>
+        </li>
+        {
+            SITE_MAP.map(({ name, path, description }) => (
+                <li>
+                    <a
+                        href={path}
+                        aria-label={`Ir a ver ${description} en Fresh Jacuzzis`}
+                        role="menuitem"
+                    >
+                        {name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background-color: var(--background-light);
+        list-style: none;
+        flex-direction: column;
+        display: flex;
+        transition: right 0.3s ease-in-out;
+        width: 100%;
+        height: 100%;
+    }
+
+    ul.open {
+        right: 0;
+    }
+
+    li {
+        border-bottom: 1px solid var(--border-color);
+        margin: 0 1rem;
+        display: inline-flex;
+    }
+
+    a,
+    button {
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        padding: 1rem;
+        height: 100%;
+        text-decoration: none;
+        color: var(--text-light);
+        transition: all 0.2s ease;
+    }
+
+    a:hover,
+    button:hover {
+        color: var(--button-hover);
+        background-color: var(--background-dark);
+    }
+
+    button {
+        text-align: right;
+    }
+
+    nav > button {
+        border: none;
+        cursor: pointer;
+        padding: 0 1rem;
+        transition: color 0.2s ease;
+    }
+
+    @media (min-width: 835px) {
+        button {
+            display: none;
+        }
+        ul {
+            position: initial;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: transparent;
+        }
+    }
+</style>
+
+<script defer type="module">
+    const burgerButton = document.getElementById("burger-button");
+    const xmarkButton = document.getElementById("xmark-button");
+    const menu = document.getElementById("menu");
+
+    function toggleMenu(isOpen) {
+        menu?.classList.toggle("open", isOpen);
+        burgerButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        menu?.setAttribute("aria-hidden", isOpen ? "false" : "true");
+    }
+
+    burgerButton?.addEventListener("click", () => toggleMenu(true));
+    xmarkButton?.addEventListener("click", () => toggleMenu(false));
+    menu?.addEventListener("click", () => toggleMenu(false));
+</script>

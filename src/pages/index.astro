@@ -1,0 +1,16 @@
+---
+import Benefits from "@/components/main/Benefits.astro";
+import Hero from "@/components/main/Hero.astro";
+import Products from "@/components/main/Products.astro";
+import Layout from "@/layouts/Layout.astro";
+import ContactForm from "@/components/ContactForm.astro";
+
+import photo from "@/assets/banner-jacuzzi-landscape.jpg";
+---
+
+<Layout title="Fresh Jacuzzis">
+    <Hero />
+    <Products />
+    <Benefits />
+    <ContactForm src={photo} dataAos={{ "data-aos": "fade-up" }} />
+</Layout>

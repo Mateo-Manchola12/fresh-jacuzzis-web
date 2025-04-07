@@ -1,0 +1,516 @@
+[
+    {
+        "id": "1ALDKGFS",
+        "name": "Millenium",
+        "capacity": 2,
+        "height": 48,
+        "width": 180,
+        "depth": 120,
+        "specs": {
+            "basic": [
+                "6 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 calentador de 3kw (220)",
+                "1 desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "6 hidrojets cromados (hidroterapia)",
+                "4 microjets (hidroterapia suave)",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 mantenedor de 1.5Kw, (110V) o calentador de 3kw (220)",
+                "1 chasis",
+                "2 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "6 hidrojets cromados (hidroterapia)",
+                "6 microjets (hidroterapia suave)",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luces led de alta definición)",
+                "1 mantenedor de 1.5Kw, (110V) o calentador de 3kw (220)",
+                "1 chasis",
+                "2 cabeceros",
+                "1 griferia completa",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "P964646D",
+        "name": "Heiwa",
+        "capacity": 2,
+        "height": 55,
+        "width": 180,
+        "depth": 120,
+        "specs": {
+            "basic": [
+                "6 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 mantenedor de 1.5kw (110v) o 1 calentador de 3kw (220)",
+                "2 almohadas de tuvo",
+                "1 desagüe de pus con rebose",
+                "1 faldón",
+                "1 chasis"
+            ],
+            "medium": [
+                "6 hidrojets cromados(hidroterapia)",
+                "4 microjets",
+                "1 motobomba de hidromasajes",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 mantenedor de 1.5Kw (110V) o calentador de 3kw (220) o calentador de 3kw(220)",
+                "2 almohadas",
+                "2 pasamanos",
+                "1 desagüe de pus con rebose",
+                "1 faldón",
+                "1 chasis"
+            ],
+            "full": [
+                "8 hidrojets cromados (hidroterapia)",
+                "6 microjets (hidroterapiasuave)",
+                "1 motobomba de hidromasajes (110v)",
+                "2 luces led de alta definición (cromoterapia)",
+                "1 mantenedor de 1.5Kw (110V) o calentador de 3kw (220)",
+                "2 almohadas",
+                "2 pasamanos",
+                "1 tele ducha",
+                "1 desagüe de pus con rebose",
+                "1 faldón",
+                "1 chasis"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "IQ31RJEW",
+        "name": "Juno redondo",
+        "capacity": 4,
+        "height": 156,
+        "diameter": 65,
+        "specs": {
+            "basic": [
+                "5 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 calentador de 3kw (220)",
+                "1 Desagüe de pus con rebose",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "5 hidrojets cromados(hidroterapia)",
+                "6 boquillas blower (aeroterapia)",
+                "1 Motor de blower",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 calentador de 3kw (220)",
+                "1 chasis",
+                "4 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "5 hidrojets cromados(hidroterapia)",
+                "3 microjets (hidroterapia suave)",
+                "6 boquillas blower (aeroterapia)",
+                "1 Motor de blower",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (2 luces led de alta definición)",
+                "1 calentador de 3kw (220)",
+                "1 chasis",
+                "4 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "PSOJCHRT",
+        "name": "Abundia",
+        "capacity": 3,
+        "height": 190,
+        "width": 150,
+        "depth": 75,
+        "specs": {
+            "basic": [
+                "6 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 calentador de 3kw (220)",
+                "1 desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "8 hidrojets cromados(hidroterapia)",
+                "4 micros (masaje suave)",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 calentador eléctrico (220)",
+                "1 chasis",
+                "2 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "8 hidrojets cromados (hidroterapia)",
+                "6 microjets (hidroterapia suave)",
+                "6 boquillas blower (aeroterapia)",
+                "2 motobomba de hidromasajes(110v)",
+                "1 cromoterapia (2 luces led de alta defnición)",
+                "1 calentador de 5.5kw (220)",
+                "1 chasis",
+                "4 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "2GWHTT8G",
+        "name": "Xuixi",
+        "capacity": 4,
+        "height": 150,
+        "width": 200,
+        "depth": 75,
+        "specs": {
+            "basic": [
+                "6 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 calentador de 3kw (220)",
+                "1 desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "8 hidrojets cromados (hidroterapia)",
+                "4 micros (masaje suave)",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 calentador de eléctrico (220)",
+                "1 chasis",
+                "2 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "8 hidrojets cromados (hidroterapia)",
+                "6 microjets (hidroterapia suave)",
+                "6 boquillas blower (aeroterapia)",
+                "2 motobombas de hidromasajes (110v)",
+                "1 cromoterapia (2 luces led de alta definición)",
+                "1 calentador de 5.5kw(220)",
+                "1 chasis",
+                "4 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "RO1XRUU7",
+        "name": "Montana",
+        "capacity": 4,
+        "height": 200,
+        "width": 150,
+        "depth": 75,
+        "specs": {
+            "basic": [
+                "6 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 calentador de 3kw(220)",
+                "1 desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "8 hidrojets cromados (hidroterapia)",
+                "4 micros (masaje suave)",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 chasis",
+                "2 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "8 hidrojets cromados (hidroterapia)",
+                "6 microjets (hidroterapia suave)",
+                "6 boquillas blower (aeroterapia)",
+                "2 motobombas de hidromasajes (110v)",
+                "1 cromoterapia (2 luces led de alta definición)",
+                "1 calentador de 5.5kw (220)",
+                "1 chasis",
+                "4 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "6VPY7SHH",
+        "name": "Bionda",
+        "capacity": 6,
+        "height": 200,
+        "width": 200,
+        "depth": 95,
+        "specs": {
+            "basic": [
+                "8 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 calentador de 5.5kw (220)",
+                "1 desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "8 hidrojets cromados (hidroterapia)",
+                "7 microjets (hidroterapia suave)",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 calentador de 5.5kw (220)",
+                "1 chasis",
+                "6 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "8 hidrojets cromados (hidroterapia)",
+                "7 microjets (hidroterapia suave)",
+                "8 boquillas blower (aeroterapia)",
+                "2 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 calentador de 5.5kw (220)",
+                "1 chasis",
+                "6 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "X5FJOBI5",
+        "name": "Hades",
+        "capacity": 2,
+        "height": 204,
+        "width": 207,
+        "depth": 75,
+        "specs": {
+            "basic": [
+                "8 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 calentador de 5.5kw (220)",
+                "1desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "8 hidrojets cromados(hidroterapia)",
+                "7 microjets cromados (hidroterapia suave)",
+                "1 motobomba de hidromasajes",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 calentador de 5.5kw (220)",
+                "1 chasis",
+                "8 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "8 hidrojets cromados (hidroterapia)",
+                "7 microjets (hidroterapiasuave)",
+                "8 boquillas blower (aeroterapia)",
+                "1 motor de blower",
+                "2 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 calentador de 5.5kw (220)",
+                "1 chasis",
+                "6 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "ER5ILEWY",
+        "name": "Imperial",
+        "capacity": 8,
+        "height": 210,
+        "width": 230,
+        "depth": 95,
+        "specs": {
+            "basic": [
+                "8 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 calentador de 8kw (220)",
+                "1 Desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "14 hidrojets cromados(hidroterapia)",
+                "8 boquillas blower (aeroterapia)",
+                "1 Motor de blower",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (2 luz led de alta definición)",
+                "1 calentador de 8kw (220)",
+                "1 chasis",
+                "3 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "14 hidrojets cromados(hidroterapia)",
+                "8 microjets (hidroterapia suave)",
+                "8 boquillas blower (aeroterapia)",
+                "1 Motor de blower",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (3 luces led de alta definición)",
+                "1 calentador de 8kw (220)",
+                "1 chasis",
+                "8 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "KK1VFZQ0",
+        "name": "Lugano",
+        "capacity": 8,
+        "height": 260,
+        "width": 215,
+        "depth": 95,
+        "specs": {
+            "basic": [
+                "8 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 calentador de 8kw (220)",
+                "1 desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "14 hidrojets cromados(hidroterapia)",
+                "8 boquillas blower (aeroterapia)",
+                "1 motor de blower",
+                "1 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (2 luz led de alta definición)",
+                "1 calentador de 8kw (220)",
+                "1 chasis",
+                "3 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "14 hidrojets cromados (hidroterapia)",
+                "8 microjets (hidroterapia suave)",
+                "8 boquillas blower (aeroterapia)",
+                "1 motor de blower",
+                "1 motobomba de hidromasajes(110v)",
+                "1 cromoterapia (3 luces led de alta defnición)",
+                "1 calentador de 8kw (220)",
+                "1 chasis",
+                "8 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "Q2FZ41JT",
+        "name": "Romana",
+        "capacity": 10,
+        "height": 300,
+        "width": 200,
+        "depth": 95,
+        "specs": {
+            "basic": [
+                "8 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 filtro (mantenimiento de agua)",
+                "1 desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "15 hidrojets cromados (hidroterapia)",
+                "2 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 calentador de 10kw (220)",
+                "1 filtro (mantenimiento de agua)",
+                "1 chasis",
+                "3 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "24 hidrojets cromados (hidroterapia)",
+                "13 boquillas blower (aeroterapia)",
+                "2 motobombas de hidromasajes (110v)",
+                "1 cromoterapia (2 luces led de alta definición)",
+                "1 calentador de 10kw(220)",
+                "1 filtro (mantenimiento de agua)",
+                "1 chasis",
+                "9 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    },
+    {
+        "id": "5XKKESJY",
+        "name": "Movedo",
+        "capacity": 12,
+        "height": 300,
+        "width": 200,
+        "depth": 95,
+        "specs": {
+            "basic": [
+                "8 hidrojets cromados (hidroterapia)",
+                "1 motobomba hidromasajes",
+                "1 luz led de alta definición (cromoterapia)",
+                "1 filtro (mantenimiento de agua)",
+                "1 desagüe",
+                "1 chasis",
+                "Transporte"
+            ],
+            "medium": [
+                "15 hidrojets cromados (hidroterapia)",
+                "2 motobomba de hidromasajes (110v)",
+                "1 cromoterapia (1 luz led de alta definición)",
+                "1 calentador de 10kw (220)",
+                "1 filtro (mantenimiento de agua)",
+                "1 chasis",
+                "3 cabeceros",
+                "Transporte"
+            ],
+            "full": [
+                "24 hidrojets cromados (hidroterapia)",
+                "13 boquillas blower (aeroterapia)",
+                "2 motobombas de hidromasajes (110v)",
+                "1 cromoterapia (2 luces led de alta definición)",
+                "1 calentador de 10kw (220)",
+                "1 filtro (mantenimiento de agua)",
+                "1 chasis",
+                "9 cabeceros",
+                "Transporte"
+            ]
+        },
+        "availability": true,
+        "visibility": true
+    }
+]
