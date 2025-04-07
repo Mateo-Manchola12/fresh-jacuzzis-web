@@ -8,7 +8,7 @@
                 "id": "Z8X4YQW7",
                 "name": "NIRIXIA",
                 "capacity": 1,
-                "height": 300,
+                "height": 80,
                 "width": 174,
                 "depth": 84,
                 "specs": [
@@ -54,7 +54,7 @@
                     }
                 ],
                 "availability": true,
-                "visibility": false
+                "visibility": true
             }
         ]
     },
@@ -204,15 +204,15 @@
                         "title": "Medio",
                         "id": "medium",
                         "list": [
-                            "5 hidrojets cromados(hidroterapia)",
+                            "5 hidrojets cromados (hidroterapia)",
                             "6 boquillas blower (aeroterapia)",
-                            "1 Motor de blower",
-                            "1 motobomba de hidromasajes (110v)",
-                            "1 cromoterapia (1 luz led de alta definición)",
-                            "1 calentador de 3kw (220)",
+                            "1 motor de blower",
+                            "1 motobomba hidromasajes",
+                            "1 cromoterapia (luz led de alta definición multicolor)",
+                            "1 cascada plana",
+                            "1 mantenedor eléctrico",
                             "1 chasis",
-                            "4 cabeceros",
-                            "Transporte"
+                            "4 cabeceros"
                         ]
                     },
                     {
@@ -234,7 +234,7 @@
                     }
                 ],
                 "availability": true,
-                "visibility": false
+                "visibility": true
             },
             {
                 "id": "A7X9PLQ3",
@@ -809,7 +809,7 @@
                 "id": "X7PL9QW3",
                 "name": "Super Spa",
                 "capacity": 12,
-                "height": 300,
+                "height": 95,
                 "width": 350,
                 "depth": 250,
                 "specs": [
@@ -860,7 +860,7 @@
                     }
                 ],
                 "availability": true,
-                "visibility": false
+                "visibility": true
             }
         ]
     }

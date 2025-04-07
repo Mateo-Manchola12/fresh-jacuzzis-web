@@ -2,7 +2,7 @@ name: Deploy Astro site to Hostinger
 
 on:
     push:
-        branches: ["dev"]
+        branches: [testing", "main"]
     workflow_dispatch:
 
 permissions:
@@ -14,11 +14,10 @@ concurrency:
     cancel-in-progress: false
 
 env:
-    BUILD_PATH: "." # Subcarpeta, si tienes una, pon su nombre
+    BUILD_PATH: "."
     HOSTINGER_FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
-    HOSTINGER_FTP_USERNAME: ${{ secrets.HOSTINGER_FTP_USERNAME }}
     HOSTINGER_FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-    HOSTINGER_FTP_PORT: 21 # Cambia este puerto si usas SFTP (puerto 22)
+    HOSTINGER_FTP_PORT: 21
 
 jobs:
     build:
@@ -27,6 +26,7 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
+
             - name: Detect package manager
               id: detect-package-manager
               run: |
@@ -34,14 +34,10 @@ jobs:
                     echo "manager=yarn" >> $GITHUB_OUTPUT
                     echo "command=install" >> $GITHUB_OUTPUT
                     echo "runner=yarn" >> $GITHUB_OUTPUT
-                    echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
-                    exit 0
                   elif [ -f "${{ github.workspace }}/package.json" ]; then
                     echo "manager=npm" >> $GITHUB_OUTPUT
                     echo "command=ci" >> $GITHUB_OUTPUT
                     echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-                    echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
-                    exit 0
                   else
                     echo "Unable to determine package manager"
                     exit 1
@@ -51,12 +47,15 @@ jobs:
               with:
                   node-version: "20"
                   cache: "npm"
+
             - name: Install dependencies
               run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
               working-directory: ${{ env.BUILD_PATH }}
+
             - name: Build with Astro
-              run: |
+              run: ${{ steps.detect-package-manager.outputs.runner }} astro build
               working-directory: ${{ env.BUILD_PATH }}
+
             - name: Upload build artifact
               uses: actions/upload-artifact@v4
               with:
@@ -73,12 +72,23 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                   name: build
-            - name: Deploy to Hostinger via FTP
+
+            - name: Set FTP username based on branch
+              id: ftp
+              run: |
+                  if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+                    echo "username=${{ secrets.MAIN_FTP_USERNAME }}" >> $GITHUB_OUTPUT
+                  elif [[ "${{ github.ref }}" == "refs/heads/testing" ]]; then
+                    echo "username=${{ secrets.TESTING_FTP_USERNAME }}" >> $GITHUB_OUTPUT
+                  else
+                    echo "username=${{ secrets.HOSTINGER_FTP_USERNAME }}" >> $GITHUB_OUTPUT
+                  fi
+            - name: Deploy via FTP
               uses: SamKirkland/FTP-Deploy-Action@4.3.0
               with:
-                  server: ${{ secrets.HOSTINGER_FTP_HOST }}
-                  username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
-                  password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-                  port: ${{ secrets.HOSTINGER_FTP_PORT }}
+                  server: ${{ env.HOSTINGER_FTP_HOST }}
+                  username: ${{ steps.ftp.outputs.username }}
+                  password: ${{ env.HOSTINGER_FTP_PASSWORD }}
+                  port: ${{ env.HOSTINGER_FTP_PORT }}
                   local-dir: ./
-                  server-dir: /public_html/ # Cambia esto por la ruta correcta en tu servidor
+                  server-dir: /public_html/
