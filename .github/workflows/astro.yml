@@ -6,12 +6,12 @@ on:
     workflow_dispatch:
 
 permissions:
-    contents: read
-    id-token: write
+  contents: read
+  id-token: write
 
 concurrency:
-    group: "pages"
-    cancel-in-progress: false
+  group: "pages"
+  cancel-in-progress: false
 
 env:
     BUILD_PATH: "."
