@@ -14,7 +14,7 @@ export interface Product {
     specs?: readonly Specs[]
     availability: boolean
     visibility: boolean
-    category?: string
+    category: string
 }
 export interface Category {
     category: string

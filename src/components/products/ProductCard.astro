@@ -2,7 +2,7 @@
 import { DOMAIN_NAME } from "@constants/static_paths"
 import { Picture } from "astro:assets"
 import Specs from "./Specs.astro"
-import { Product } from "@/types/productTypes"
+import type { Product } from "@/types/productTypes"
 import capitalizeFirstLetter from "@lib/capitalizeFirstLetter"
 
 interface Props {
@@ -28,7 +28,8 @@ const { id, product, img, dataAos, category } = Astro.props
     />
     <div class="specs">
         <h1 transition:name={`${product.category}-${product.id}-title`}>
-            Jacuzzi {product.name}
+            {capitalizeFirstLetter(product.category)}
+            {product.name}
         </h1>
         <Specs product={product} />
         <a

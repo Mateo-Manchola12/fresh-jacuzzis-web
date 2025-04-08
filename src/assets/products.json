@@ -816,14 +816,7 @@
                 ],
                 "availability": true,
                 "visibility": true
-            }
-        ]
-    },
-    {
-        "category": "hogar",
-        "title": "Nuestra selección para el hogar",
-        "description": "Nuestros lavaderos de fibra de vidrio están diseñados para brindar una solución práctica, resistente y duradera, ideal para las condiciones del hogar colombiano. Fabricados con un compuesto de filamentos de vidrio entrelazados y resina de poliéster, este material ofrece una destacada resistencia a la tracción, torsión y otros esfuerzos mecánicos. Gracias a sus propiedades, es inmune a la oxidación, a la corrosión y al deterioro por humedad, lo que se traduce en un sistema ligero, con alta relación resistencia-peso, bajo mantenimiento y excelente aislamiento térmico y acústico.",
-        "products": [
+            },
             {
                 "id": "Z8X4YQW7",
                 "name": "NIRIXIA",
@@ -876,7 +869,14 @@
                 ],
                 "availability": true,
                 "visibility": true
-            },
+            }
+        ]
+    },
+    {
+        "category": "hogar",
+        "title": "Nuestra selección para el hogar",
+        "description": "Nuestros lavaderos de fibra de vidrio están diseñados para brindar una solución práctica, resistente y duradera, ideal para las condiciones del hogar colombiano. Fabricados con un compuesto de filamentos de vidrio entrelazados y resina de poliéster, este material ofrece una destacada resistencia a la tracción, torsión y otros esfuerzos mecánicos. Gracias a sus propiedades, es inmune a la oxidación, a la corrosión y al deterioro por humedad, lo que se traduce en un sistema ligero, con alta relación resistencia-peso, bajo mantenimiento y excelente aislamiento térmico y acústico.",
+        "products": [
             {
                 "id": "A1B2C3D4",
                 "name": "50 x 50",

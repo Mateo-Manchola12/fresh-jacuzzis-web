@@ -5,6 +5,7 @@ import Specs from "@components/products/Specs.astro"
 import Cta from "@components/Cta.astro"
 import capitalizeFirstLetter from "@lib/capitalizeFirstLetter"
 import products from "@/hooks/products"
+import type { Product } from "@/types/productTypes"
 
 export function getStaticPaths() {
     type Path = {
@@ -33,14 +34,14 @@ export function getStaticPaths() {
 const { category, id } = Astro.params
 const product = products
     .find(({ category: title }) => title === category)
-    ?.products.find(({ id: product }) => product === id)
+    ?.products.find(({ id: product }) => product === id) as Product
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
     `/src/assets/products/* - Fresh Jacuzzis.{jpeg,jpg,png,gif}`,
 )
 const image =
     await images[
-        `/src/assets/products/${capitalizeFirstLetter(product.category)} ${product.name} - Fresh Jacuzzis.jpeg`
+        `/src/assets/products/${capitalizeFirstLetter(product.category ?? "")} ${product.name} - Fresh Jacuzzis.jpeg`
     ]()
 ---
 
@@ -50,15 +51,15 @@ const image =
             loading="lazy"
             src={image.default}
             formats={["avif", "webp", "jpeg"]}
-            alt={`${capitalizeFirstLetter(product.category)} ${product.name} | Fresh Jacuzzis`}
+            alt={`${capitalizeFirstLetter(product.category ?? "")} ${product.name} | Fresh Jacuzzis`}
             widths={[150, 300, 600]}
             sizes="(max-width: 600px) 150px, (max-width: 1200px) 300px, 600px"
             transition:name={`${product.category}-${product.id}-img`}
         />
         <div class="specs">
             <h1 transition:name={`${product.category}-${product.id}-title`}>
-                {capitalizeFirstLetter(product.category)}
-                {product?.name}
+                {capitalizeFirstLetter(product.category ?? "")}
+                {product.name}
             </h1>
             <Specs product={product} />
             <Cta transition:name={`${product.category}-${product.id}-btn`}>
@@ -70,7 +71,7 @@ const image =
         {product.specs && <h2>Características</h2>}
         <div class="product-specs">
             {
-                product?.specs?.map?.(({ title, list }) => {
+                product.specs?.map?.(({ title, list }) => {
                     return (
                         <div class="specs-level">
                             <h3>{title}</h3>
