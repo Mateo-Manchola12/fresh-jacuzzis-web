@@ -6,8 +6,8 @@ export interface Specs {
 export interface Product {
     id: string
     name: string
-    capacity: number
-    height: number
+    capacity?: number
+    height?: number
     diameter?: number
     width?: number
     depth?: number

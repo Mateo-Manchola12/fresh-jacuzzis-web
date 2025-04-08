@@ -20,7 +20,7 @@ const RAW_SITE_MAP: Page[] = [
             {
                 name: "Para el hogar",
                 slug: "hogar",
-                description: "Nuestra sección de jacuzzis",
+                description: "Nuestra selección de productos para el hogar",
             },
         ],
     },

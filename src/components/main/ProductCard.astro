@@ -1,4 +1,5 @@
 ---
+import capitalizeFirstLetter from "@/lib/capitalizeFirstLetter"
 import type { Product } from "@/types/productTypes"
 import { DOMAIN_NAME } from "@constants/static_paths"
 import { Picture } from "astro:assets"
@@ -7,33 +8,34 @@ interface Props {
     aosDelay: Number
     product: Product
     image: ImageMetadata
+    category: string
 }
 
-const { aosDelay, product, image } = Astro.props
-const { id, name, category } = product
+const { aosDelay, product, image, category } = Astro.props
 ---
 
 <article
     data-aos="fade-right"
     data-aos-delay={aosDelay}
     data-aos-anchor="#product-list"
-    aria-labelledby={`product-${id}`}
+    aria-labelledby={`product-${product.id}`}
 >
     <a
-        href={`${DOMAIN_NAME}/producto/${category}/${id}`}
-        aria-describedby={`product-description-${id}`}
+        href={`${DOMAIN_NAME}/producto/${category}/${product.id}`}
+        aria-describedby={`product-description-${product.id}`}
     >
         <Picture
             loading="lazy"
             src={image}
             formats={["avif", "webp", "jpeg"]}
-            alt={`Jacuzzi ${name} | Fresh Jacuzzis`}
+            alt={`${capitalizeFirstLetter(product.category)} ${product.name} | Fresh Jacuzzis`}
             widths={[150, 300, 600]}
             sizes="(max-width: 600px) 150px, (max-width: 1200px) 300px, 600px"
-            transition:name={`jacuzzi-${id}-img`}
+            transition:name={`${product.category}-${product.id}-img`}
         />
-        <p id={`product-description-${id}`} transition:name={`jacuzzi-${id}-title`}>
-            Jacuzzi {name}
+        <p id={`product-description-${product.id}`} transition:name={`${product.category}-${product.id}-title`}>
+            {capitalizeFirstLetter(product.category)}
+            {product.name}
         </p>
     </a>
 </article>
