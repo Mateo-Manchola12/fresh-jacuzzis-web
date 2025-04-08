@@ -1,11 +1,12 @@
 ---
-import { DOMAIN_NAME } from "@/constants";
+import { DOMAIN_NAME } from "@constants/static_paths";
 
 import { Picture } from "astro:assets";
 import Specs from "./Specs.astro";
 
 interface Props {
     id: string;
+    category: string;
     product: {
         [x: string]: any;
         name: string;
@@ -18,7 +19,7 @@ interface Props {
     dataAos: {};
 }
 
-const { id, product, img, dataAos } = Astro.props;
+const { id, product, category, img, dataAos } = Astro.props;
 ---
 
 <article {...dataAos} transition:name={`jacuzzi-${id}`}>
@@ -37,7 +38,7 @@ const { id, product, img, dataAos } = Astro.props;
         </h1>
         <Specs product={product} />
         <a
-            href={`${DOMAIN_NAME}/producto/${id}`}
+            href={`${DOMAIN_NAME}/producto/${category}/${id}`}
             transition:name={`jacuzzi-${product.id}-btn`}>Descubre más</a
         >
     </div>
@@ -100,7 +101,7 @@ const { id, product, img, dataAos } = Astro.props;
     @media (min-width: 800px) {
         article {
             flex-direction: row;
-            min-width: ;
+            min-width:;
             width: 48%;
             max-width: 650px;
             min-width: 550px;

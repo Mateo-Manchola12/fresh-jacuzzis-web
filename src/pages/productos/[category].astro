@@ -1,32 +1,57 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import products from "@/assets/products.json";
-import ProductCard from "@/components/products/ProductCard.astro";
-import Banner from "@/components/products/Banner.astro";
+import Layout from "@layout";
+import products from "@hooks/products";
+
+import ProductCard from "@components/products/ProductCard.astro";
+import Banner from "@components/products/Banner.astro";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/products/Jacuzzi * - Fresh Jacuzzis.{jpeg,jpg,png,gif}"
+    "/src/assets/products/Jacuzzi * - Fresh Jacuzzis.{jpeg,jpg,png,gif}",
 );
+
+export function getStaticPaths() {
+    const ids = products.map((category) => category.category);
+    const params = ids.map((category) => {
+        return { params: { category } };
+    });
+
+    return [...params];
+}
+
+const { category } = Astro.params;
+
+const categoryObject = products.filter(
+    ({ category: id }) => id === category,
+)[0];
 ---
 
 <Layout title="Productos">
-    <Banner />
+    <Banner
+        data-category={{
+            category: categoryObject.category,
+            title: categoryObject.title,
+            description: categoryObject.description,
+        }}
+    />
+
     <section>
         {
-            products
+            categoryObject.products
                 .filter(
-                    ({ visibility, availability }) => visibility && availability
+                    ({ visibility, availability }) => visibility && availability,
                 )
                 .map(async (product, index) => {
                     const image =
                         await images[
                             `/src/assets/products/Jacuzzi ${product.name} - Fresh Jacuzzis.jpeg`
                         ]();
+
                     return (
                         <ProductCard
                             id={product.id}
+                            category={category}
                             product={product}
-                            img={image.default}
+                            img={image?.default}
                             dataAos={{
                                 "data-aos": "fade-up",
                                 "data-aos-delay": index * 100,

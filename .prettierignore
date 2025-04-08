@@ -1,9 +1,6 @@
 # build output
 dist/
-
-# generated types
-.astro/
-.env.production
+.output/
 
 # dependencies
 node_modules/
@@ -14,8 +11,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# macOS-specific files
-.DS_Store
+# Astro generated files
+.astro/
 
-# Fuentes
-*.ttf
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

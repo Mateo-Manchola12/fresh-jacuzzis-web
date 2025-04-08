@@ -1,33 +1,39 @@
 ---
-import type { ImageMetadata } from "astro";
-import products from "@/assets/products.json";
-import ProductCard from "@/components/main/ProductCard.astro";
+import type { ImageMetadata } from "astro"
+import products from "@assets/products.json"
+import ProductCard from "@components/main/ProductCard.astro"
+import type { Category, Product } from "@/types/productTypes"
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/products/Jacuzzi * - Fresh Jacuzzis.{jpeg,jpg,png,gif}"
-);
+    "/src/assets/products/Jacuzzi * - Fresh Jacuzzis.{jpeg,jpg,png,gif}",
+)
 ---
 
 <section aria-label="Slider de productos" class="product-slider">
     <div class="product-list" id="product-list">
         {
             products
-                .filter(
-                    ({ availability, visibility }) => availability && visibility
-                )
-                .map(async ({ name, id }, index) => {
+                .reduce((arr: Product[], category: Category) => {
+                    return arr.concat(
+                        category.products.map((product) => ({
+                            ...product,
+                            category: category.category,
+                        })),
+                    )
+                }, [] as Product[])
+                .filter(({ availability, visibility }) => availability && visibility)
+                .map(async (product, index) => {
                     const image =
                         await images[
-                            `/src/assets/products/Jacuzzi ${name} - Fresh Jacuzzis.jpeg`
-                        ]();
+                            `/src/assets/products/Jacuzzi ${product.name} - Fresh Jacuzzis.jpeg`
+                        ]()
                     return (
                         <ProductCard
                             aosDelay={index * 200}
-                            name={name}
-                            id={id}
+                            product={product}
                             image={image.default}
                         />
-                    );
+                    )
                 })
         }
     </div>
