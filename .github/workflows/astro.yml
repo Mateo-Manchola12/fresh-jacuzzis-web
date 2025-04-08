@@ -2,24 +2,34 @@ name: Deploy Astro site to Hostinger
 
 on:
     push:
-        branches: [testing", "main"]
+        branches: ["main", "testing"]
     workflow_dispatch:
 
 permissions:
-  contents: read
-  id-token: write
+    contents: read
+    id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    group: "pages"
+    cancel-in-progress: false
 
 env:
     BUILD_PATH: "."
     HOSTINGER_FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
     HOSTINGER_FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
     HOSTINGER_FTP_PORT: 21
+    BUILD_PATH: "."
+    HOSTINGER_FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
+    HOSTINGER_FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+    HOSTINGER_FTP_PORT: 21
 
 jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
     build:
         name: Build
         runs-on: ubuntu-latest
@@ -42,6 +52,7 @@ jobs:
                     echo "Unable to determine package manager"
                     exit 1
                   fi
+
             - name: Setup Node
               uses: actions/setup-node@v4
               with:
@@ -51,9 +62,22 @@ jobs:
             - name: Install dependencies
               run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
               working-directory: ${{ env.BUILD_PATH }}
+            - name: Install dependencies
+              run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+              working-directory: ${{ env.BUILD_PATH }}
 
-            - name: Build with Astro
-              run: ${{ steps.detect-package-manager.outputs.runner }} astro build
+            - name: Build with Astro (by branch)
+              run: |
+                  if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+                    echo "Building for production..."
+                    ${{ steps.detect-package-manager.outputs.runner }} run build
+                  elif [[ "${{ github.ref }}" == "refs/heads/testing" ]]; then
+                    echo "Building for testing..."
+                    ${{ steps.detect-package-manager.outputs.runner }} run build:test
+                  else
+                    echo "Branch not supported for build"
+                    exit 1
+                  fi
               working-directory: ${{ env.BUILD_PATH }}
 
             - name: Upload build artifact
@@ -62,7 +86,22 @@ jobs:
                   name: build
                   include-hidden-files: true
                   path: ${{ env.BUILD_PATH }}/dist/
+            - name: Upload build artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build
+                  include-hidden-files: true
+                  path: ${{ env.BUILD_PATH }}/dist/
 
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        name: Deploy to Hostinger
+        steps:
+            - name: Download build artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: build
     deploy:
         needs: build
         runs-on: ubuntu-latest
@@ -80,9 +119,8 @@ jobs:
                     echo "username=${{ secrets.MAIN_FTP_USERNAME }}" >> $GITHUB_OUTPUT
                   elif [[ "${{ github.ref }}" == "refs/heads/testing" ]]; then
                     echo "username=${{ secrets.TESTING_FTP_USERNAME }}" >> $GITHUB_OUTPUT
-                  else
-                    echo "username=${{ secrets.HOSTINGER_FTP_USERNAME }}" >> $GITHUB_OUTPUT
                   fi
+
             - name: Deploy via FTP
               uses: SamKirkland/FTP-Deploy-Action@4.3.0
               with:
