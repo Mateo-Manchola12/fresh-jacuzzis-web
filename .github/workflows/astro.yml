@@ -60,7 +60,7 @@ jobs:
                     echo "Building for production..."
                     ${{ steps.detect-package-manager.outputs.runner }} run build
                   elif [[ "${{ github.ref }}" == "refs/heads/testing" ]]; then
-                    echo "Building for testing..."a
+                    echo "Building for testing..."
                     ${{ steps.detect-package-manager.outputs.runner }} run build:test
                   else
                     echo "Branch not supported for build"
