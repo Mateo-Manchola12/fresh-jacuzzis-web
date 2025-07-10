@@ -1,34 +1,37 @@
 ---
-import type { ImageMetadata } from "astro";
-import products from "@/assets/products.json";
-import ProductCard from "@/components/main/ProductCard.astro";
+import type { ImageMetadata } from "astro"
+import products from "@hooks/products"
+import ProductCard from "@components/main/ProductCard.astro"
+import type { Category, Product } from "@/types/productTypes"
+import capitalizeFirstLetter from "@/lib/capitalizeFirstLetter"
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/products/Jacuzzi * - Fresh Jacuzzis.{jpeg,jpg,png,gif}"
-);
+    "/src/assets/products/* - Fresh Jacuzzis.{jpeg,jpg,png,gif}",
+)
 ---
 
 <section aria-label="Slider de productos" class="product-slider">
     <div class="product-list" id="product-list">
         {
-            products
-                .filter(
-                    ({ availability, visibility }) => availability && visibility
-                )
-                .map(async ({ name, id }, index) => {
-                    const image =
-                        await images[
-                            `/src/assets/products/Jacuzzi ${name} - Fresh Jacuzzis.jpeg`
-                        ]();
-                    return (
-                        <ProductCard
-                            aosDelay={index * 200}
-                            name={name}
-                            id={id}
-                            image={image.default}
-                        />
-                    );
-                })
+            products.map((category: Category) => {
+                return category.products
+                    .filter(({ availability, visibility }) => availability && visibility)
+                    .map(async (product, index) => {
+                        const image =
+                            await images[
+                                `/src/assets/products/${capitalizeFirstLetter(product.category)} ${product.name} - Fresh Jacuzzis.jpeg`
+                            ]()
+
+                        return (
+                            <ProductCard
+                                category={category.category}
+                                aosDelay={index * 200}
+                                product={product}
+                                image={image.default}
+                            />
+                        )
+                    })
+            })
         }
     </div>
 </section>

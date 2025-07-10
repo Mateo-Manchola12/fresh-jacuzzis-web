@@ -1,77 +1,91 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import products from "@/assets/products.json";
-import { Picture } from "astro:assets";
-import Specs from "@/components/products/Specs.astro";
-import Cta from "@/components/Cta.astro";
+import Layout from "@layout"
+import { Picture } from "astro:assets"
+import Specs from "@components/products/Specs.astro"
+import Cta from "@components/Cta.astro"
+import capitalizeFirstLetter from "@lib/capitalizeFirstLetter"
+import products from "@/hooks/products"
+import type { Product } from "@/types/productTypes"
 
 export function getStaticPaths() {
-    const ids = products
-        .filter(({ availability, visibility }) => availability && visibility)
-        .map((product) => product.id);
-    const params = ids.map((id) => {
-        return { params: { id } };
-    });
+    type Path = {
+        category: string
+        id: string
+    }
 
-    return [...params];
+    const paths: Path[] = products.reduce((arr: Path[], category) => {
+        const categoryPaths: Path[] = category.products
+            .filter(({ availability, visibility }) => availability && visibility)
+            .map(({ id }) => ({
+                category: category.category,
+                id,
+            }))
+
+        return arr.concat(categoryPaths)
+    }, [])
+
+    const params = paths.map((path) => {
+        return { params: path }
+    })
+
+    return [...params]
 }
 
-const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/products/Jacuzzi * - Fresh Jacuzzis.{jpeg,jpg,png,gif}"
-);
+const { category, id } = Astro.params
+const product = products
+    .find(({ category: title }) => title === category)
+    ?.products.find(({ id: product }) => product === id) as Product
 
-const { id: param } = Astro.params;
-const product = products.filter(({ id }) => param === id)[0];
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    `/src/assets/products/* - Fresh Jacuzzis.{jpeg,jpg,png,gif}`,
+)
 const image =
     await images[
-        `/src/assets/products/Jacuzzi ${product.name} - Fresh Jacuzzis.jpeg`
-    ]();
+        `/src/assets/products/${capitalizeFirstLetter(product.category ?? "")} ${product.name} - Fresh Jacuzzis.jpeg`
+    ]()
 ---
 
-<Layout>
-    <section transition:name={`jacuzzi-${product.id}`} class="product">
+<Layout title={`${product.category} ${product.name} | Fresh Jacuzzis`}>
+    <section transition:name={`${product.category}-${product.id}`} class="product">
         <Picture
             loading="lazy"
             src={image.default}
             formats={["avif", "webp", "jpeg"]}
-            alt={`Jacuzzi ${product.name} | Fresh Jacuzzis`}
+            alt={`${capitalizeFirstLetter(product.category ?? "")} ${product.name} | Fresh Jacuzzis`}
             widths={[150, 300, 600]}
             sizes="(max-width: 600px) 150px, (max-width: 1200px) 300px, 600px"
-            transition:name={`jacuzzi-${product.id}-img`}
+            transition:name={`${product.category}-${product.id}-img`}
         />
         <div class="specs">
-            <h1 transition:name={`jacuzzi-${product.id}-title`}>
-                Jacuzzi {product.name}
+            <h1 transition:name={`${product.category}-${product.id}-title`}>
+                {capitalizeFirstLetter(product.category ?? "")}
+                {product.name}
             </h1>
             <Specs product={product} />
-            <Cta transition:name={`jacuzzi-${product.id}-btn`}>
+            <Cta transition:name={`${product.category}-${product.id}-btn`}>
                 Cotiza ahora mismo
             </Cta>
         </div>
     </section>
     <section>
-        <h2>Características</h2>
+        {product.specs && <h2>Características</h2>}
         <div class="product-specs">
-            <div class="specs-level">
-                <h3>Básico</h3>
-                <ul>
-                    {product.specs.basic.map((spec) => <li>{spec}</li>)}
-                </ul>
-            </div>
-            <div class="specs-level">
-                <h3>Medio</h3>
-                <ul>
-                    {product.specs.medium.map((spec) => <li>{spec}</li>)}
-                </ul>
-            </div>
-            <div class="specs-level">
-                <h3>Completo</h3>
-                <ul>
-                    {product.specs.full.map((spec) => <li>{spec}</li>)}
-                </ul>
-            </div>
+            {
+                product.specs?.map?.(({ title, list }) => {
+                    return (
+                        <div class="specs-level">
+                            <h3>{title}</h3>
+                            <ul>
+                                {list.map((spec) => (
+                                    <li>{spec}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )
+                })
+            }
         </div>
-        <Cta>¡Cotiza ahora!</Cta>
+        {product.specs && <Cta>¡Cotiza ahora!</Cta>}
     </section>
 </Layout>
 <style>
@@ -82,7 +96,6 @@ const image =
         justify-content: center;
         margin: 20px auto;
     }
-
     picture {
         border-radius: 10px;
         overflow: hidden;
@@ -96,7 +109,6 @@ const image =
         object-fit: cover;
         border-radius: 10px;
     }
-
     .specs {
         display: flex;
         flex-direction: column;
@@ -108,7 +120,6 @@ const image =
     h1 {
         font-size: 2.5rem;
         color: var(--primary-dark);
-        width: 30vw;
     }
 
     a {
@@ -125,6 +136,9 @@ const image =
     }
 
     @media (min-width: 800px) {
+        h1 {
+            width: 30vw;
+        }
         picture,
         img {
             width: 40vw;

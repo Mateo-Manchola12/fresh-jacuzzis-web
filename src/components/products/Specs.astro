@@ -1,13 +1,13 @@
 ---
-import Capacity from "@/svg/Capacity.astro";
-import Diameter from "@/svg/Diameter.astro";
-import Height from "@/svg/Height.astro";
-import Size from "@/svg/Size.astro";
+import Capacity from "@svg/Capacity.astro";
+import Diameter from "@svg/Diameter.astro";
+import Height from "@svg/Height.astro";
+import Size from "@svg/Size.astro";
 
 const { product } = Astro.props;
 ---
 
-<ul transition:name={`jacuzzi-${product.id}-specs`}>
+<ul transition:name={`${product.category}-${product.id}-specs`}>
     {
         product.capacity && (
             <li>

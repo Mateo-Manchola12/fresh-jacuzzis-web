@@ -1,17 +1,13 @@
 ---
-import { getImage } from "astro:assets";
-import poster from "@/assets/bubbles.jpeg";
-import Cta from "@/components/Cta.astro";
+import { getImage } from "astro:assets"
+import poster from "@assets/bubbles.jpeg"
+import Cta from "@components/Cta.astro"
 
-const videoSrc = "/video/bubbles";
-const optimizedPoster = await getImage({ src: poster });
+const videoSrc = "/video/bubbles"
+const optimizedPoster = await getImage({ src: poster })
 ---
 
-<section
-    class="hero"
-    aria-labelledby="hero-heading"
-    aria-describedby="hero-description"
->
+<section class="hero" aria-labelledby="hero-heading" aria-describedby="hero-description">
     <video
         class="hero-video"
         playsinline
@@ -21,22 +17,16 @@ const optimizedPoster = await getImage({ src: poster });
         aria-hidden="true"
         poster={optimizedPoster.src}
     >
-        <source
-            src={`${videoSrc}-mobile.webm`}
-            type="video/webm"
-            media="(max-width: 768px)"
-        />
+        <source src={`${videoSrc}-mobile.webm`} type="video/webm" media="(max-width: 768px)" />
         <source src={`${videoSrc}.mp4`} type="video/mp4" />
         <source src={`${videoSrc}.webm`} type="video/webm" />
         Tu navegador no soporta este video
     </video>
     <div class="hero-content">
-        <h1 id="hero-heading">
-            Sumérgete en el lujo, relájate en la perfección
-        </h1>
+        <h1 id="hero-heading">Sumérgete en el lujo, relájate en la perfección</h1>
         <p id="hero-description">
-            Diseñamos jacuzzis exclusivos que transforman tu hogar en un oasis
-            de bienestar y sofisticación.
+            Diseñamos jacuzzis exclusivos que transforman tu hogar en un oasis de bienestar y
+            sofisticación.
         </p>
         <Cta aria-label="Descubre más sobre nuestra tienda"> Cotiza aquí </Cta>
     </div>
@@ -92,13 +82,13 @@ const optimizedPoster = await getImage({ src: poster });
         margin: 0;
     }
 </style>
-<script type="module">
-    document.addEventListener("astro:after-swap", () => {
-        const video = document.querySelector(".hero-video");
+<script>
+    import { $ } from "@/lib/dom-selector"
+
+    document.addEventListener("astro:page-load", () => {
+        const video = $(".hero-video") as HTMLVideoElement
         if (video) {
-            video
-                .play()
-                .catch((err) => console.error("Error al reproducir:", err));
+            video.play()
         }
-    });
+    })
 </script>

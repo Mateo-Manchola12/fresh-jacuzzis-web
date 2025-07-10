@@ -1,21 +1,36 @@
+---
+interface Props {
+    "data-category": {
+        category: string
+        title: string
+        description: string
+    }
+}
+
+const { "data-category": category } = Astro.props
+---
+
 <section>
-    <h1>Nuestros productos</h1>
+    <h1>{category.title}</h1>
     <p>
-        Nuestras conchas para ensamblaje de tus Jacuzzis se fabrican en una sola
-        pieza, que se recubre con un polímero compuesto por grupos de filamentos
-        muy delgados de vidrio, al que se añade una resina de poliéster. Este
-        material, que es fibra de vidrio, nos asegura un sistema flexible,
-        duradero y fácil de mantener en un calibre de 3/16
+        {category.description}
     </p>
 </section>
 <style>
     section {
+        font-size: medium;
         margin-top: 0;
         background: linear-gradient(#00000099, #00000099), var(--primary-dark);
         color: var(--accent-color);
-        padding: 4rem;
+        padding: 3rem;
     }
     h1 {
         margin-bottom: 1.3rem;
+    }
+
+    @media (min-width: 800px) {
+        section {
+            font-size: large;
+        }
     }
 </style>

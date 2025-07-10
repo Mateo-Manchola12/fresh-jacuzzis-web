@@ -1,0 +1,25 @@
+---
+import type { Page } from "@types/pageTypes"
+interface Props {
+    pages: Page[]
+}
+const { pages } = Astro.props
+---
+
+{
+    pages.map((page) => (
+        <li>
+            <a
+                href={page.clickable ? page.path : "javascript:;"}
+                aria-label={`Ir a ver ${page.description} en Fresh Jacuzzis`}
+            >
+                {page.name}
+            </a>
+            {"subpages" in page && page.subpages.length > 0 && (
+                <ul>
+                    <Astro.self pages={page.subpages} />
+                </ul>
+            )}
+        </li>
+    ))
+}

@@ -1,9 +1,9 @@
 name: Deploy Astro site to Hostinger
 
 on:
-  push:
-    branches: ["dev", "testing", "main"]
-  workflow_dispatch:
+    push:
+        branches: ["main", "testing"]
+    workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,83 +14,92 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: "."
-  HOSTINGER_FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
-  HOSTINGER_FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
-  HOSTINGER_FTP_PORT: 21
+    BUILD_PATH: "."
+    HOSTINGER_FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
+    HOSTINGER_FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+    HOSTINGER_FTP_PORT: 21
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
+            - name: Detect package manager
+              id: detect-package-manager
+              run: |
+                  if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+                    echo "manager=yarn" >> $GITHUB_OUTPUT
+                    echo "command=install" >> $GITHUB_OUTPUT
+                    echo "runner=yarn" >> $GITHUB_OUTPUT
+                  elif [ -f "${{ github.workspace }}/package.json" ]; then
+                    echo "manager=npm" >> $GITHUB_OUTPUT
+                    echo "command=ci" >> $GITHUB_OUTPUT
+                    echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+                  else
+                    echo "Unable to determine package manager"
+                    exit 1
+                  fi
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "npm"
 
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-        working-directory: ${{ env.BUILD_PATH }}
+            - name: Install dependencies
+              run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+              working-directory: ${{ env.BUILD_PATH }}
 
-      - name: Build with Astro
-        run: ${{ steps.detect-package-manager.outputs.runner }} astro build
-        working-directory: ${{ env.BUILD_PATH }}
+            - name: Build with Astro (by branch)
+              run: |
+                  echo "Checking the branch..."
+                  if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+                    echo "Building for production..."
+                    ${{ steps.detect-package-manager.outputs.runner }} run build
+                  elif [[ "${{ github.ref }}" == "refs/heads/testing" ]]; then
+                    echo "Building for testing..."a
+                    ${{ steps.detect-package-manager.outputs.runner }} run build:test
+                  else
+                    echo "Branch not supported for build"
+                    exit 1
+                  fi
+              working-directory: ${{ env.BUILD_PATH }}
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          include-hidden-files: true
-          path: ${{ env.BUILD_PATH }}/dist/
+            - name: Upload build artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build
+                  include-hidden-files: true
+                  path: ${{ env.BUILD_PATH }}/dist/
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy to Hostinger
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        name: Deploy to Hostinger
+        steps:
+            - name: Download build artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: build
 
-      - name: Set FTP username based on branch
-        id: ftp
-        run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "username=${{ secrets.MAIN_FTP_USERNAME }}" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.ref }}" == "refs/heads/testing" ]]; then
-            echo "username=${{ secrets.TESTING_FTP_USERNAME }}" >> $GITHUB_OUTPUT
-          else
-            echo "username=${{ secrets.HOSTINGER_FTP_USERNAME }}" >> $GITHUB_OUTPUT
-          fi
+            - name: Set FTP username based on branch
+              id: ftp
+              run: |
+                  if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+                    echo "username=${{ secrets.MAIN_FTP_USERNAME }}" >> $GITHUB_OUTPUT
+                  elif [[ "${{ github.ref }}" == "refs/heads/testing" ]]; then
+                    echo "username=${{ secrets.TESTING_FTP_USERNAME }}" >> $GITHUB_OUTPUT
+                  fi
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ env.HOSTINGER_FTP_HOST }}
-          username: ${{ steps.ftp.outputs.username }}
-          password: ${{ env.HOSTINGER_FTP_PASSWORD }}
-          port: ${{ env.HOSTINGER_FTP_PORT }}
-          local-dir: ./
-          server-dir: /public_html/
+            - name: Deploy via FTP
+              uses: SamKirkland/FTP-Deploy-Action@4.3.0
+              with:
+                  server: ${{ env.HOSTINGER_FTP_HOST }}
+                  username: ${{ steps.ftp.outputs.username }}
+                  password: ${{ env.HOSTINGER_FTP_PASSWORD }}
+                  port: ${{ env.HOSTINGER_FTP_PORT }}
+                  local-dir: ./
+                  server-dir: /public_html/
