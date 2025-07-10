@@ -1,11 +1,11 @@
 ---
 import { getImage } from "astro:assets";
-import BenefitCard from "@/components/main/BenefitCard.astro";
+import BenefitCard from "@components/main/BenefitCard.astro";
 
-import photo from "@/assets/Beneficios.jpeg";
-import Dollar from "@/svg/Dollar.astro";
-import Time from "@/svg/Time.astro";
-import Durability from "@/svg/Durability.astro";
+import photo from "@assets/Beneficios.jpeg";
+import Dollar from "@svg/Dollar.astro";
+import Time from "@svg/Time.astro";
+import Durability from "@svg/Durability.astro";
 const backgroundPhoto = await getImage({ src: photo });
 ---
 

@@ -1,18 +1,11 @@
-module.exports = {
-    extends: [
-        'plugin:astro/recommended'
-    ],
-    overrides: [
-        {
-            files: ['*.astro'],
-            parser: 'astro-eslint-parser',
-            parserOptions: {
-                parser: '@typescript-eslint/parser',
-                extraFileExtensions: ['.astro'],
-            },
-            rules: {
-                // Add your custom rules here
-            },
+import eslintPluginAstro from "eslint-plugin-astro";
+import { defineConfig } from "eslint/config";
+
+export default defineConfig([
+    ...eslintPluginAstro.configs.recommended,
+    {
+        rules: {
+            "comma-dangle": ["error", "always-multiline"],
         },
-    ],
-};
+    },
+]);
