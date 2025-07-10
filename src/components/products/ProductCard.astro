@@ -1,44 +1,40 @@
 ---
-import { DOMAIN_NAME } from "@/constants";
-
-import { Picture } from "astro:assets";
-import Specs from "./Specs.astro";
+import { DOMAIN_NAME } from "@constants/static_paths"
+import { Picture } from "astro:assets"
+import Specs from "./Specs.astro"
+import type { Product } from "@/types/productTypes"
+import capitalizeFirstLetter from "@lib/capitalizeFirstLetter"
 
 interface Props {
-    id: string;
-    product: {
-        [x: string]: any;
-        name: string;
-        capacity?: number;
-        height?: number;
-        width?: number;
-        depth?: number;
-    };
-    img: ImageMetadata;
-    dataAos: {};
+    id: string
+    product: Product
+    img: ImageMetadata
+    category: string
+    dataAos: {}
 }
 
-const { id, product, img, dataAos } = Astro.props;
+const { id, product, img, dataAos, category } = Astro.props
 ---
 
-<article {...dataAos} transition:name={`jacuzzi-${id}`}>
+<article {...dataAos} transition:name={`${product.category}-${id}`}>
     <Picture
         loading="lazy"
         src={img}
         formats={["avif", "webp", "jpeg"]}
-        alt={`Jacuzzi ${product.name} | Fresh Jacuzzis`}
+        alt={`${capitalizeFirstLetter(product.category)} ${product.name} | Fresh Jacuzzis`}
         widths={[150, 300, 600]}
         sizes="(max-width: 600px) 150px, (max-width: 1200px) 300px, 600px"
-        transition:name={`jacuzzi-${product.id}-img`}
+        transition:name={`${product.category}-${product.id}-img`}
     />
     <div class="specs">
-        <h1 transition:name={`jacuzzi-${product.id}-title`}>
-            Jacuzzi {product.name}
+        <h1 transition:name={`${product.category}-${product.id}-title`}>
+            {capitalizeFirstLetter(product.category)}
+            {product.name}
         </h1>
         <Specs product={product} />
         <a
-            href={`${DOMAIN_NAME}/producto/${id}`}
-            transition:name={`jacuzzi-${product.id}-btn`}>Descubre más</a
+            href={`${DOMAIN_NAME}/producto/${category}/${id}`}
+            transition:name={`${product.category}-${product.id}-btn`}>Descubre más</a
         >
     </div>
 </article>
@@ -100,7 +96,7 @@ const { id, product, img, dataAos } = Astro.props;
     @media (min-width: 800px) {
         article {
             flex-direction: row;
-            min-width: ;
+            min-width:;
             width: 48%;
             max-width: 650px;
             min-width: 550px;

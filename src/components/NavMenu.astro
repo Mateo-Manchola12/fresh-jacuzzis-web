@@ -1,0 +1,86 @@
+---
+import type { Page } from "@/types/pageTypes"
+
+interface Props {
+    sites: Page[]
+    deep: number
+}
+
+const { sites, deep } = Astro.props
+---
+
+{
+    sites.map((page: Page) => (
+        <li
+            class:list={[
+                {
+                    "nav-option": deep === 0,
+                    "parent-option": deep === 1,
+                    "sub-option": deep > 1,
+                    "has-submenu": "subpages" in page,
+                },
+            ]}
+        >
+            <a
+                class:list={["menu-link", { enabled: page.clickable }]}
+                href={page.clickable ? page.path : "javascript:;"}
+                aria-label={`Ir a ver ${page.description} en Fresh Jacuzzis`}
+                role="menuitem"
+            >
+                <span>{page.name}</span>
+            </a>
+            {"subpages" in page && page.subpages.length > 0 && (
+                <ul
+                    class:list={[
+                        {
+                            "parent-menu": deep === 0,
+                            "sub-menu": deep > 0,
+                        },
+                    ]}
+                >
+                    <Astro.self sites={page.subpages} deep={deep + 1} />
+                </ul>
+            )}
+        </li>
+    ))
+}
+<style define:vars={{ indent: `${deep}rem` }}>
+    .has-submenu {
+        flex-direction: column;
+        position: relative;
+    }
+
+    span {
+        text-indent: var(--indent);
+    }
+    li {
+        display: inline-flex;
+    }
+    .nav-option {
+        margin: 0 1rem;
+    }
+    .parent-menu,
+    .sub-menu {
+        display: none;
+        width: 100%;
+        height: auto;
+    }
+
+    .has-submenu:hover > ul,
+    .has-submenu:active > ul {
+        display: flex;
+    }
+
+    @media (min-width: 835px) {
+        :global(.nav) .parent-menu {
+            top: 100px;
+            left: -50%;
+            width: 200%;
+            position: absolute;
+            text-align: center;
+        }
+        span {
+            text-indent: 0;
+        }
+    }
+</style>

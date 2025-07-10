@@ -1,3 +1,7 @@
+---
+import { DOMAIN_NAME } from "@/constants/static_paths"
+---
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
     name="description"
@@ -6,29 +10,61 @@
 <meta name="author" content="Fresh Jacuzzis" />
 <meta name="keywords" content="jacuzzis, hidromasajes, spa, lujo, relax" />
 <meta name="robots" content="index, follow" />
-<meta
-    property="og:title"
-    content="Fresh Jacuzzis - Lujo y confort en Medellín"
-/>
+<meta property="og:title" content="Fresh Jacuzzis - Lujo y confort en Medellín" />
 <meta
     property="og:description"
     content="Explora nuestra selección de jacuzzis premium con tecnología de última generación."
 />
-<meta property="og:url" content="https://www.freshjacuzzis.com" />
+<meta property="og:url" content={DOMAIN_NAME} />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta
-    name="twitter:title"
-    content="Fresh Jacuzzis - Disfruta del lujo y la relajación"
-/>
+<meta name="twitter:title" content="Fresh Jacuzzis - Disfruta del lujo y la relajación" />
 <meta
     name="twitter:description"
     content="Los mejores jacuzzis en Medellín, con calidad garantizada."
 />
 <meta name="referrer" content="no-referrer" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta
-    http-equiv="cache-control"
-    content="no-cache, no-store, must-revalidate"
-/>
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+<!-- Google Tag Manager -->
+<script>
+    ;(function (w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" })
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : ""
+        j.async = true
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl
+        f.parentNode.insertBefore(j, f)
+    })(window, document, "script", "dataLayer", "GTM-5424DPBC")
+</script>
+<script>
+    !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return
+        n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        }
+        if (!f._fbq) f._fbq = n
+        n.push = n
+        n.loaded = !0
+        n.version = "2.0"
+        n.queue = []
+        t = b.createElement(e)
+        t.async = !0
+        t.src = v
+        s = b.getElementsByTagName(e)[0]
+        s.parentNode.insertBefore(t, s)
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js")
+    fbq("init", "1300432487747104")
+    fbq("track", "PageView")
+</script>
+<noscript
+    ><img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=1300432487747104&ev=PageView&noscript=1"
+    /></noscript
+>
