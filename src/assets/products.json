@@ -243,6 +243,7 @@
                 "height": 80,
                 "width": 150,
                 "depth": 190,
+                "depth": 190,
                 "category": "jacuzzi",
                 "specs": [
                     {
@@ -298,7 +299,9 @@
                 "name": "Xuixi",
                 "capacity": 4,
                 "height": 75,
+                "height": 75,
                 "width": 200,
+                "depth": 150,
                 "depth": 150,
                 "category": "jacuzzi",
                 "specs": [
@@ -354,8 +357,9 @@
                 "id": "RO1XRUU7",
                 "name": "Montana",
                 "capacity": 4,
-                "height": 200,
+                "height": 74,
                 "width": 150,
+                "depth": 200,
                 "depth": 200,
                 "category": "jacuzzi",
                 "specs": [
@@ -412,7 +416,9 @@
                 "name": "Bionda",
                 "capacity": 6,
                 "height": 95,
+                "height": 95,
                 "width": 200,
+                "depth": 200,
                 "depth": 200,
                 "category": "jacuzzi",
                 "specs": [
@@ -469,8 +475,9 @@
                 "id": "X5FJOBI5",
                 "name": "Hades",
                 "capacity": 8,
-                "height": 204,
+                "height": 95,
                 "width": 207,
+                "depth": 204,
                 "depth": 204,
                 "category": "jacuzzi",
                 "specs": [
@@ -527,8 +534,9 @@
                 "id": "ER5ILEWY",
                 "name": "Imperial",
                 "capacity": 8,
-                "height": 210,
+                "height": 100,
                 "width": 230,
+                "depth": 210,
                 "depth": 210,
                 "category": "jacuzzi",
                 "specs": [
@@ -587,7 +595,9 @@
                 "name": "Lugano",
                 "capacity": 8,
                 "height": 95,
+                "height": 95,
                 "width": 215,
+                "depth": 260,
                 "depth": 260,
                 "category": "jacuzzi",
                 "specs": [
@@ -646,7 +656,9 @@
                 "name": "Romana",
                 "capacity": 10,
                 "height": 95,
+                "height": 95,
                 "width": 200,
+                "depth": 300,
                 "depth": 300,
                 "category": "jacuzzi",
                 "specs": [
@@ -705,7 +717,9 @@
                 "name": "Movedo",
                 "capacity": 12,
                 "height": 95,
+                "height": 95,
                 "width": 200,
+                "depth": 300,
                 "depth": 300,
                 "category": "jacuzzi",
                 "specs": [
