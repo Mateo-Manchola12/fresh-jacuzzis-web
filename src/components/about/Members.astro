@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from "astro:assets"
 
 const workers = [
     {
@@ -31,11 +31,15 @@ const workers = [
         name: "Alejandro Londoño",
         post: "asesor técnico y auxiliar de producción",
     },
-];
+    {
+        name: "Sebastián Piedrahita",
+        post: "Auxiliar general",
+    },
+]
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/workers/*.{jpeg,jpg,png,gif}",
-);
+)
 ---
 
 <section>
