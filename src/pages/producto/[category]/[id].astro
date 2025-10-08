@@ -45,7 +45,7 @@ const image =
     ]()
 ---
 
-<Layout title={`${product.category} ${product.name} | Fresh Jacuzzis`}>
+<Layout title={`${capitalizeFirstLetter(product.category)} ${product.name} | Fresh Jacuzzis`}>
     <section transition:name={`${product.category}-${product.id}`} class="product">
         <Picture
             loading="lazy"
