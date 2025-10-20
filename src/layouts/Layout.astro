@@ -5,11 +5,6 @@ import Header from "@components/Header.astro"
 import Footer from "@components/Footer.astro"
 import FaviconLinks from "@components/FaviconLinks.astro"
 
-import "@fontsource/poppins/100.css"
-import "@fontsource/poppins/400.css"
-import "@fontsource/poppins/700.css"
-import "@fontsource/archivo-black/400.css"
-
 import "aos/dist/aos.css"
 import Meta from "@components/Meta.astro"
 
@@ -23,7 +18,7 @@ const { title } = Astro.props
 
         <Meta />
         <FaviconLinks />
-        <title>{title}</title>
+        <title>{title} | Fresh HidroJacuzz</title>
         <ClientRouter />
     </head><body>
         <!-- Google Tag Manager (noscript) -->
@@ -55,29 +50,29 @@ const { title } = Astro.props
 <style is:global>
     :root {
         /* Colores principales */
-        --primary-color: #2a7f9d; /* Azul petróleo */
-        --primary-dark: #205d75; /* Azul profundo */
-        --primary-light: #4fa3c1; /* Azul agua */
+        --primary-color: #203b76;
+        --primary-dark: #212e58;
+        --primary-light: #063d70;
 
-        --secondary-color: #c2b49a; /* Beige tostado */
-        --secondary-dark: #a69378; /* Marrón suave */
-        --secondary-light: #ded2ba; /* Arena clara */
+        --secondary-color: #c4912f;
+        --secondary-dark: #875500;
+        --secondary-light: #cea240;
 
         /* Colores de fondo y texto */
-        --background-light: #f4f4f4; /* Blanco grisáceo */
-        --background-dark: #e8e8e8; /* Gris perla */
-        --text-dark: #3d3d3d; /* Gris grafito */
-        --text-light: #5a5a5a; /* Gris medio */
+        --background-light: #f4f4f4;
+        --background-dark: #e8e8e8;
+        --text-dark: #3d3d3d;
+        --text-light: #5a5a5a;
 
         /* Colores de acento */
-        --accent-color: #f1ebdf; /* Marfil cálido */
-        --accent-dark: #d6c9b5; /* Beige clásico */
-        --accent-light: #faf8f3; /* Crema claro */
+        --accent-color: #f1ebdf;
+        --accent-dark: #d6c9b5;
+        --accent-light: #faf8f3;
 
         /* Colores interactivos */
-        --button-hover: #205d75; /* Azul intenso */
-        --button-active: #174456; /* Azul noche */
-        --border-color: #5e9bb0; /* Celeste ahumado */
+        --button-hover: #205d75;
+        --button-active: #174456;
+        --border-color: #5e9bb0;
     }
 
     *,
@@ -88,9 +83,44 @@ const { title } = Astro.props
         box-sizing: border-box;
     }
 
+    @font-face {
+        font-family: "Louis George Cafe";
+        src: url("/fonts/Louis George Cafe.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Louis George Cafe";
+        src: url("/fonts/Louis George Cafe Bold.woff2") format("woff2");
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Louis George Cafe";
+        src: url("/fonts/Louis George Cafe Light.woff2") format("woff2");
+        font-weight: lighter;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("/fonts/Montserrat.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    button,
+    a {
+        font-family: "Montserrat", sans-serif;
+    }
+
     body {
         font-family:
-            "Poppins",
+            "Louis George Cafe",
             sans-serif,
             system-ui,
             -apple-system,
@@ -114,6 +144,14 @@ const { title } = Astro.props
         align-items: center;
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Montserrat", sans-serif;
+    }
     main {
         min-height: calc(100vh - 100px);
         width: 100%;

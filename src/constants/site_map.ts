@@ -1,5 +1,5 @@
 import { DOMAIN_NAME } from "@constants/static_paths"
-import type { Page } from "@types/pageTypes"
+import type { Page } from "@t/pageTypes"
 
 const RAW_SITE_MAP: Page[] = [
     {

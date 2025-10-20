@@ -1,5 +1,5 @@
 ---
-import type { Page } from "@/types/pageTypes"
+import type { Page } from "@t/pageTypes"
 
 interface Props {
     sites: Page[]
@@ -23,8 +23,8 @@ const { sites, deep } = Astro.props
         >
             <a
                 class:list={["menu-link", { enabled: page.clickable }]}
-                href={page.clickable ? page.path : "javascript:;"}
-                aria-label={`Ir a ver ${page.description} en Fresh Jacuzzis`}
+                href={page.clickable ? page.path : "javascript:"}
+                aria-label={`Ir a ver ${page.description} en Fresh HidroJacuzz`}
                 role="menuitem"
             >
                 <span>{page.name}</span>
@@ -51,7 +51,9 @@ const { sites, deep } = Astro.props
     }
 
     span {
+        font-family: "Louis George Cafe", sans-serif;
         text-indent: var(--indent);
+        font-weight: bolder;
     }
     li {
         display: inline-flex;

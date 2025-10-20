@@ -4,10 +4,9 @@ import HeaderNav from "@components/HeaderNav.astro"
 import { DOMAIN_NAME } from "@constants/static_paths"
 ---
 
-<header role="banner" aria-label="Encabezado de Fresh Jacuzzis">
-    <a href={DOMAIN_NAME} aria-label="Ir a la página principal de Fresh Jacuzzis">
+<header role="banner" aria-label="Encabezado de Fresh HidroJacuzz">
+    <a href={DOMAIN_NAME} aria-label="Ir a la página principal de Fresh HidroJacuzz">
         <FreshJacuzzisLogo size={60} />
-        <h1 aria-label="Título de la página">fresh</h1>
     </a>
     <HeaderNav />
 </header>
@@ -34,13 +33,5 @@ import { DOMAIN_NAME } from "@constants/static_paths"
         text-decoration: none;
         color: var(--text-light);
         height: 6rem;
-    }
-
-    h1 {
-        font-family: "Archivo Black";
-        text-transform: uppercase;
-        font-size: x-large;
-        font-weight: 800;
-        margin-left: 0.5rem;
     }
 </style>
