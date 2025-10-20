@@ -1,6 +1,6 @@
 ---
-import capitalizeFirstLetter from "@/lib/capitalizeFirstLetter"
-import type { Product } from "@/types/productTypes"
+import capitalizeFirstLetter from "@lib/capitalizeFirstLetter"
+import type { Product } from "@t/productTypes"
 import { DOMAIN_NAME } from "@constants/static_paths"
 import { Picture } from "astro:assets"
 
@@ -9,37 +9,53 @@ interface Props {
     product: Product
     image: ImageMetadata
     category: string
+    firstView: boolean
 }
-const { aosDelay, product, image, category } = Astro.props
+const { aosDelay, product, image, category, firstView } = Astro.props
 ---
 
-<article
-    data-aos="fade-right"
-    data-aos-delay={aosDelay}
-    data-aos-anchor="#product-list"
-    aria-labelledby={`product-${product.id}`}
->
-    <a
-        href={`${DOMAIN_NAME}/producto/${category}/${product.id}`}
-        aria-describedby={`product-description-${product.id}`}
+<div class="product-card">
+    <article
+        data-aos="fade-right"
+        data-aos-delay={aosDelay}
+        data-aos-anchor="#product-list"
+        aria-labelledby={`product-${product.id}`}
     >
-        <Picture
-            loading="lazy"
-            src={image}
-            formats={["avif", "webp", "jpeg"]}
-            alt={`${capitalizeFirstLetter(product.category)} ${product.name} | Fresh Jacuzzis`}
-            widths={[150, 300, 600]}
-            sizes="(max-width: 600px) 150px, (max-width: 1200px) 300px, 600px"
-            transition:name={`${product.category}-${product.id}-img`}
-        />
-        <p id={`product-description-${product.id}`} transition:name={`${product.category}-${product.id}-title`}>
-            {capitalizeFirstLetter(product.category)}
-            {product.name}
-        </p>
-    </a>
-</article>
+        <a
+            href={`${DOMAIN_NAME}/producto/${category}/${product.id}`}
+            aria-describedby={`product-description-${product.id}`}
+        >
+            <Picture
+                loading={firstView ? "eager" : "lazy"}
+                src={image}
+                formats={["avif", "webp", "jpeg"]}
+                alt={`${capitalizeFirstLetter(product.category)} ${product.name} | Fresh HidroJacuzz`}
+                widths={[150, 300, 600]}
+                sizes="(max-width: 600px) 150px, (max-width: 1200px) 300px, 600px"
+                transition:name={`${product.category}-${product.id}-img`}
+            />
+            <p
+                id={`product-description-${product.id}`}
+                transition:name={`${product.category}-${product.id}-title`}
+            >
+                {capitalizeFirstLetter(product.category)}
+                {product.name}
+            </p>
+        </a>
+    </article>
+</div>
 
 <style>
+    .product-card {
+        transition: scale 0.3s ease;
+    }
+
+    .product-card:hover {
+        scale: 1.05;
+    }
+    .product-card:active {
+        scale: 0.95;
+    }
     article {
         position: relative;
         scroll-snap-align: center;

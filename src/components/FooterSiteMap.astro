@@ -1,5 +1,5 @@
 ---
-import type { Page } from "@types/pageTypes"
+import type { Page } from "@t/pageTypes"
 interface Props {
     pages: Page[]
 }
@@ -10,8 +10,8 @@ const { pages } = Astro.props
     pages.map((page) => (
         <li>
             <a
-                href={page.clickable ? page.path : "javascript:;"}
-                aria-label={`Ir a ver ${page.description} en Fresh Jacuzzis`}
+                href={page.clickable ? page.path : "#"}
+                aria-label={`Ir a ver ${page.description} en Fresh HidroJacuzz`}
             >
                 {page.name}
             </a>

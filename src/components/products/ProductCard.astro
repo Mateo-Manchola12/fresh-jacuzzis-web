@@ -2,7 +2,7 @@
 import { DOMAIN_NAME } from "@constants/static_paths"
 import { Picture } from "astro:assets"
 import Specs from "./Specs.astro"
-import type { Product } from "@/types/productTypes"
+import type { Product } from "@t/productTypes"
 import capitalizeFirstLetter from "@lib/capitalizeFirstLetter"
 
 interface Props {
@@ -10,18 +10,19 @@ interface Props {
     product: Product
     img: ImageMetadata
     category: string
+    firstView: boolean
     dataAos: {}
 }
 
-const { id, product, img, dataAos, category } = Astro.props
+const { id, product, img, dataAos, category, firstView } = Astro.props
 ---
 
 <article {...dataAos} transition:name={`${product.category}-${id}`}>
     <Picture
-        loading="lazy"
+        loading={firstView ? "eager" : "lazy"}
         src={img}
         formats={["avif", "webp", "jpeg"]}
-        alt={`${capitalizeFirstLetter(product.category)} ${product.name} | Fresh Jacuzzis`}
+        alt={`${capitalizeFirstLetter(product.category)} ${product.name} | Fresh HidroJacuzz`}
         widths={[150, 300, 600]}
         sizes="(max-width: 600px) 150px, (max-width: 1200px) 300px, 600px"
         transition:name={`${product.category}-${product.id}-img`}
@@ -86,11 +87,15 @@ const { id, product, img, dataAos, category } = Astro.props
         color: #fff;
         text-decoration: none;
         border-radius: 5px;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, scale 0.3s ease;
     }
 
     a:hover {
         background-color: var(--primary-dark);
+        scale: 1.05;
+    }
+    a:active {
+        scale: 0.95;
     }
 
     @media (min-width: 800px) {

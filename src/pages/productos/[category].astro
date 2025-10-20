@@ -4,7 +4,7 @@ import products from "@hooks/products"
 import ProductCard from "@components/products/ProductCard.astro"
 import Banner from "@components/products/Banner.astro"
 import capitalizeFirstLetter from "@/lib/capitalizeFirstLetter"
-import type { Category, Product } from "@/types/productTypes"
+import type { Category, Product } from "@t/productTypes"
 
 export function getStaticPaths() {
     const ids = products.map((category) => category.category)
@@ -32,7 +32,6 @@ const categoryObject = products.find(({ category: id }) => id === category) as C
             description: categoryObject.description,
         }}
     />
-
     <section>
         {
             categoryObject.products
@@ -45,6 +44,7 @@ const categoryObject = products.find(({ category: id }) => id === category) as C
 
                     return (
                         <ProductCard
+                            firstView={index < 2}
                             id={product.id}
                             product={product}
                             category={category}
