@@ -13,8 +13,6 @@
     },
     "dependencies": {
         "@astrojs/sitemap": "^3.3.0",
-        "@fontsource/archivo-black": "^5.2.5",
-        "@fontsource/poppins": "^5.2.5",
         "@types/react": "^19.0.10",
         "@types/react-dom": "^19.0.4",
         "aos": "^3.0.0-beta.6",

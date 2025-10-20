@@ -2,12 +2,13 @@
 import type { ImageMetadata } from "astro"
 import products from "@hooks/products"
 import ProductCard from "@components/main/ProductCard.astro"
-import type { Category, Product } from "@/types/productTypes"
+import type { Category } from "@t/productTypes"
 import capitalizeFirstLetter from "@/lib/capitalizeFirstLetter"
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/products/* - Fresh Jacuzzis.{jpeg,jpg,png,gif}",
 )
+
 ---
 
 <section aria-label="Slider de productos" class="product-slider">
@@ -24,6 +25,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
                         return (
                             <ProductCard
+                                firstView={index < 4}
                                 category={category.category}
                                 aosDelay={index * 200}
                                 product={product}

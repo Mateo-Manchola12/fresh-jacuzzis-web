@@ -32,7 +32,7 @@ export const CONTACT_METHODS: ContactMethod[] = [
     },
     {
         name: "Facebook",
-        value: "FRESH Jacuzzis",
+        value: "Fresh HidroJacuzz",
         link: "https://www.facebook.com/profile.php?id=61555844768663",
         type: "external",
     },

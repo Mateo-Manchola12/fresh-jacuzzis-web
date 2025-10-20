@@ -5,17 +5,17 @@ import FooterSiteMap from "./FooterSiteMap.astro"
 ---
 
 <footer role="contentinfo" aria-labelledby="footer-heading" data-aos="fade-up" class="footer">
-    <h2 id="footer-heading" class="sr-only">Fresh Jacuzzis</h2>
+    <h2 id="footer-heading" class="sr-only">Fresh HidroJacuzz</h2>
     <div class="footer-container">
         <div class="company-info">
-            <h3>Fresh Jacuzzis</h3>
+            <h3>Fresh HidroJacuzz</h3>
             <p><strong>Dirección:</strong> Calle 93b sur # 50- 231</p>
             {
                 CONTACT_METHODS.filter(({ type }) => type === "direct").map(
                     ({ name, link, value }) => (
                         <p>
                             <strong>{name}</strong>
-                            <a href={link} aria-label={`Conatacta al ${name} de Fresh Jacuzzis`}>
+                            <a href={link} aria-label={`Conatacta al ${name} de Fresh HidroJacuzz`}>
                                 {value}
                             </a>
                         </p>
@@ -36,7 +36,7 @@ import FooterSiteMap from "./FooterSiteMap.astro"
                     CONTACT_METHODS.filter(({ type }) => type === "external").map(
                         ({ name, link }) => (
                             <li>
-                                <a href={link} aria-label={`Ir a el ${name} de Fresh Jacuzzis`}>
+                                <a href={link} aria-label={`Ir a el ${name} de Fresh HidroJacuzz`}>
                                     {name}
                                 </a>
                             </li>
@@ -52,7 +52,7 @@ import FooterSiteMap from "./FooterSiteMap.astro"
         </div>
     </div>
     <p class="footer-bottom" aria-live="polite">
-        Fresh Jacuzzis © 2025, Designed by Mateo Manchola
+        Fresh HidroJacuzz © 2025, Designed by Mateo Manchola
     </p>
 </footer>
 
@@ -62,7 +62,6 @@ import FooterSiteMap from "./FooterSiteMap.astro"
         color: var(--accent-light);
         padding: 2rem;
         text-align: center;
-        font-family: "Poppins", sans-serif;
         width: 100%;
     }
 

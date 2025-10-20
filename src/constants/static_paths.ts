@@ -1,6 +1,6 @@
 import { loadEnv } from "vite"
 
-type StaticPath = string | undefined
+type StaticPath = string
 
 const { PUBLIC_SITE_URL, PUBLIC_INDEXABLE } = loadEnv(process.env.NODE_ENV ?? "", process.cwd(), "")
 
