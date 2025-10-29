@@ -914,6 +914,24 @@
                 "category": "Lavarropas",
                 "availability": true,
                 "visibility": true
+            },
+            {
+                "id": "SJC720DK",
+                "name": "60 x 50",
+                "width": 60,
+                "depth": 50,
+                "category": "Lavarropas",
+                "availability": true,
+                "visibility": true
+            },
+            {
+                "id": "LPAJDUE7",
+                "name": "60 x 60",
+                "width": 60,
+                "depth": 60,
+                "category": "Fregadero",
+                "availability": true,
+                "visibility": true
             }
         ]
     }
