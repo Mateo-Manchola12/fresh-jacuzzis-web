@@ -876,6 +876,7 @@
                 "height": 95,
                 "width": 200,
                 "depth": 300,
+                "capacity": 15,
                 "category": "jacuzzi",
                 "specs": [],
                 "availability": true,
@@ -912,6 +913,24 @@
                 "width": 60,
                 "depth": 80,
                 "category": "Lavarropas",
+                "availability": true,
+                "visibility": true
+            },
+            {
+                "id": "SJC720DK",
+                "name": "60 x 50",
+                "width": 60,
+                "depth": 50,
+                "category": "Lavarropas",
+                "availability": true,
+                "visibility": true
+            },
+            {
+                "id": "LPAJDUE7",
+                "name": "60 x 60",
+                "width": 60,
+                "depth": 60,
+                "category": "Fregadero",
                 "availability": true,
                 "visibility": true
             }
