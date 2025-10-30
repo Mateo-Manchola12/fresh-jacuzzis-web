@@ -876,6 +876,7 @@
                 "height": 95,
                 "width": 200,
                 "depth": 300,
+                "capacity": 15,
                 "category": "jacuzzi",
                 "specs": [],
                 "availability": true,
