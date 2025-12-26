@@ -3,10 +3,10 @@
     "type": "module",
     "version": "2.2",
     "scripts": {
-        "dev": "astro dev",
+        "dev": "astro dev --host",
         "build:test": "cross-env NODE_ENV=testing astro build",
         "build": "cross-env NODE_ENV=production astro build",
-        "preview": "astro preview",
+        "start": "astro preview",
         "astro": "astro",
         "lint": "eslint --ext .astro .",
         "lint:fix": "eslint --ext .astro --fix ."

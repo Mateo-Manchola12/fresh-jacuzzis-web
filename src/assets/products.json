@@ -463,7 +463,25 @@
                     }
                 ],
                 "availability": true,
-                "visibility": true
+                "visibility": true,
+                "colors":{
+                    "Blanco": "#FFFFFF",
+                    "Gris Claro": "#E0E0E0",
+                    "Gris Oscuro": "#808080",
+                    "Beige":"#E4D7CA",
+                    "Negro":"#000000",
+                    "Azul":"#198291"
+                },
+                "renders":{
+                    "Blanco": "https://neo.foyr.com/toolv2/magiktour/index.html?view=693f3f27466df02c657391e9",
+                    "Gris Claro": "https://neo.foyr.com/toolv2/magiktour/index.html?view=693dc6154b10a7c5dba2eca9",
+                    "Gris Oscuro": "https://neo.foyr.com/toolv2/magiktour/index.html?view=693f450d6d98ed21835ebea8",
+                    "Beige": "https://neo.foyr.com/toolv2/magiktour/index.html?view=693f4a50a836455355d83275",
+                    "Negro": "https://neo.foyr.com/toolv2/magiktour/index.html?view=693f4d96a836455355d83279",
+                    "Azul": "https://neo.foyr.com/toolv2/magiktour/index.html?view=693f4faea836455355d8327d"
+                },
+                "video": "/video/Jacuzzi Amanzi - Fresh Jacuzzis.mp4",
+                "datasheet": "/ficha/Jacuzzi Amanzi - Fresh Jacuzzis.pdf"
             },
             {
                 "id": "X5FJOBI5",
@@ -521,7 +539,25 @@
                     }
                 ],
                 "availability": true,
-                "visibility": true
+                "visibility": true,
+                "colors":{
+                    "Blanco": "#FFFFFF",
+                    "Gris Claro": "#CACBC6",
+                    "Gris Oscuro": "#A4A4A4",
+                    "Beige": "#E4D7CA",
+                    "Negro": "#000000",
+                    "Azul": "#198291"
+                },
+                "renders":{
+                    "Blanco": "https://floorplanner.com/360vr/144938458-1764953698",
+                    "Gris Claro": "https://floorplanner.com/360vr/144939772-1764955111",
+                    "Gris Oscuro": "https://floorplanner.com/360vr/144940852-1764956300",
+                    "Beige": "https://floorplanner.com/360vr/144941785-1764957651",
+                    "Negro": "https://floorplanner.com/360vr/144942655-1764958628",
+                    "Azul": "https://floorplanner.com/360vr/144985828-1765057085"
+                },
+                "datasheet": "/ficha/Jacuzzi Hades - Fresh Jacuzzis.pdf",
+                "video":"/video/Jacuzzi Hades - Fresh Jacuzzis.mp4"
             },
             {
                 "id": "ER5ILEWY",

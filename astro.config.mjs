@@ -13,9 +13,13 @@ export default defineConfig({
     vite: {
         server: {
             allowedHosts: true, // Permite todos los hosts (ngrok incluido)
+            port: Number(process.env.PORT),
         },
     },
-
+    server: {
+        port: Number(process.env.PORT),
+        allowedHosts: true,
+    },
     integrations: [
         htaccess({
             generateHtaccessFile: true,
