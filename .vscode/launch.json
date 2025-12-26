@@ -12,11 +12,11 @@
             "request": "launch",
             "name": "Abrir Opera GX",
             "runtimeExecutable": "C:\\Users\\mmanc_o5lafv9\\AppData\\Local\\Programs\\Opera GX\\opera.exe",
-            "url": "http://localhost:4321",
+            "url": "http://localhost:55000",
             "webRoot": "${workspaceFolder}"
         },
         {
-            "command": "ngrok http 4321",
+            "command": "ngrok http 55000",
             "name": "Abrir ngrok",
             "request": "launch",
             "type": "node-terminal"
