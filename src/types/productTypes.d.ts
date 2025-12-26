@@ -15,6 +15,14 @@ export interface Product {
     availability: boolean
     visibility: boolean
     category: string
+    colors?: {
+        [key: string]: string
+    }
+    renders?: {
+        [key: string]: string
+    }
+    video?: string
+    datasheet?: string
 }
 export interface Category {
     category: string
