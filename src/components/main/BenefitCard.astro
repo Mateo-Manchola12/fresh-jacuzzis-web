@@ -1,36 +1,36 @@
 ---
 interface Props {
-    dataAos: {};
-    id?: string;
+  dataAos: {}
+  id?: string
 }
-const { dataAos, id } = Astro.props;
+const { dataAos, id } = Astro.props
 ---
 
 <article
-    id={id}
-    role="article"
-    aria-labelledby="benefit-title"
-    data-aos-anchor="#anchor-benefit-card"
-    {...dataAos}
+  id={id}
+  role="article"
+  aria-labelledby="benefit-title"
+  data-aos-anchor="#anchor-benefit-card"
+  {...dataAos}
 >
-    <slot name="svg" />
-    <slot name="title" id="benefit-title" />
-    <p>
-        <slot />
-    </p>
+  <slot name="svg" />
+  <slot name="title" id="benefit-title" />
+  <p>
+    <slot />
+  </p>
 </article>
 <style>
-    article {
-        padding: 0 1rem;
-        text-align: left;
-        align-content: center;
-    }
-    article :global(svg) {
-        margin: auto;
-        width: 3em;
-        height: 3em;
-    }
-    article :global(h3) {
-        font-size: 1.2rem;
-    }
+  article {
+    padding: 0 1rem;
+    text-align: left;
+    align-content: center;
+  }
+  article :global(svg) {
+    margin: auto;
+    width: 3em;
+    height: 3em;
+  }
+  article :global(h3) {
+    font-size: 1.2rem;
+  }
 </style>
