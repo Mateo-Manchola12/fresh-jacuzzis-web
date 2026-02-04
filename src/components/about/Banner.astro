@@ -1,134 +1,133 @@
 ---
-import photo from "@assets/team.jpeg"
-import { Picture } from "astro:assets"
-import Cta from "@components/Cta.astro"
-import { DOMAIN_NAME } from "@constants/static_paths"
+import photo from '@assets/team.jpeg'
+import { Picture } from 'astro:assets'
+import Cta from '@components/Cta.astro'
+import { DOMAIN_NAME } from '@constants/static_paths'
 ---
 
 <section>
-    <Picture
-        src={photo}
-        alt="Todo el equipo de Fresh HidroJacuzz"
-        widths={[300, 600, 800]}
-        sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 800px"
-        loading="eager"
-    />
-    <article>
-        <h1>Sobre nosotros</h1>
-        <p>
-            En Fresh HidroJacuzz, somos una empresa familiar con una profunda tradición en la
-            fabricación de jacuzzis de lujo. Cada uno de nuestros productos es 100% fibra de vidrio
-            y resina, elaborado con dedicación y supervisado minuciosamente en cada etapa del
-            proceso para garantizar una calidad excepcional. Más que jacuzzis, creamos espacios de
-            bienestar que combinan confort, diseño y durabilidad.
-        </p>
-        <a href={`${DOMAIN_NAME}/productos`}>Descubre nuestros productos</a>
-    </article>
+  <Picture
+    src={photo}
+    alt="Todo el equipo de Fresh HidroJacuzz"
+    widths={[300, 600, 800]}
+    sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 800px"
+    loading="eager"
+  />
+  <article>
+    <h1>Sobre nosotros</h1>
+    <p>
+      En Fresh HidroJacuzz, somos una empresa familiar con una profunda tradición en la fabricación
+      de jacuzzis de lujo. Cada uno de nuestros productos es 100% fibra de vidrio y resina,
+      elaborado con dedicación y supervisado minuciosamente en cada etapa del proceso para
+      garantizar una calidad excepcional. Más que jacuzzis, creamos espacios de bienestar que
+      combinan confort, diseño y durabilidad.
+    </p>
+    <a href={`${DOMAIN_NAME}/productos`}>Descubre nuestros productos</a>
+  </article>
 </section>
 <style>
+  section {
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+  article {
+    padding: 2rem;
+    background: linear-gradient(#00000099, #00000099), var(--primary-dark);
+    color: var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  picture {
+    height: 35vh;
+    display: block;
+  }
+  img {
+    width: 100%;
+    height: 35vh;
+    max-height: 800px;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition: object-position 0.1s linear;
+  }
+  a {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    margin-top: 2rem;
+  }
+  @media (min-width: 800px) {
     section {
-        font-size: medium;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        overflow: hidden;
-        padding: 0;
-        margin: 0;
-    }
-    article {
-        padding: 2rem;
-        background: linear-gradient(#00000099, #00000099), var(--primary-dark);
-        color: var(--accent-color);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
+      flex-direction: row;
+      font-size: large;
     }
     picture {
-        height: 35vh;
-        display: block;
+      height: auto;
     }
     img {
-        width: 100%;
-        height: 35vh;
-        max-height: 800px;
-        object-fit: cover;
-        object-position: center;
-        margin: 0;
-        padding: 0;
-        border: none;
-        transition: object-position 0.1s linear;
+      width: 60vw;
+      height: 100%;
     }
     a {
-        border: 1px solid var(--accent-color);
-        color: var(--accent-color);
-        padding: 0.5rem 1rem;
-        margin-top: 2rem;
+      margin-top: auto;
     }
-    @media (min-width: 800px) {
-        section {
-            flex-direction: row;
-            font-size: large;
-        }
-        picture {
-            height: auto;
-        }
-        img {
-            width: 60vw;
-            height: 100%;
-        }
-        a {
-            margin-top: auto;
-        }
-    }
+  }
 </style>
 <script>
-    import { $ } from "@/lib/dom-selector"
+  import { $ } from '@/lib/dom-selector'
 
-    document.addEventListener("astro:page-load", () => {
-        const img = $("img") as HTMLImageElement
-        let maxDisplacement = 0
-        let ticking = false
+  document.addEventListener('astro:page-load', () => {
+    const img = $('img') as HTMLImageElement
+    let maxDisplacement = 0
+    let ticking = false
 
-        function updateImagePosition() {
-            if (!maxDisplacement || !img) return
+    function updateImagePosition() {
+      if (!maxDisplacement || !img) return
 
-            const newPosition = window.scrollY * 2
-            const boundedPosition = Math.min(newPosition, maxDisplacement)
+      const newPosition = window.scrollY * 2
+      const boundedPosition = Math.min(newPosition, maxDisplacement)
 
-            img.style.objectPosition = `top 0 left -${boundedPosition}px`
-            ticking = false
+      img.style.objectPosition = `top 0 left -${boundedPosition}px`
+      ticking = false
+    }
+
+    function calculateMaxDisplacement() {
+      if (!img) return
+      maxDisplacement = (img.naturalWidth * img.clientHeight) / img.naturalHeight - img.clientWidth
+      maxDisplacement = maxDisplacement > 100 ? maxDisplacement : 0
+    }
+
+    function handleScroll() {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(updateImagePosition)
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          calculateMaxDisplacement()
+          document.addEventListener('scroll', handleScroll, { passive: true })
+        } else {
+          document.removeEventListener('scroll', handleScroll)
         }
+      },
+      { threshold: 0.1 },
+    )
 
-        function calculateMaxDisplacement() {
-            if (!img) return
-            maxDisplacement =
-                (img.naturalWidth * img.clientHeight) / img.naturalHeight - img.clientWidth
-            maxDisplacement = maxDisplacement > 100 ? maxDisplacement : 0
-        }
-
-        function handleScroll() {
-            if (!ticking) {
-                ticking = true
-                requestAnimationFrame(updateImagePosition)
-            }
-        }
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    calculateMaxDisplacement()
-                    document.addEventListener("scroll", handleScroll, { passive: true })
-                } else {
-                    document.removeEventListener("scroll", handleScroll)
-                }
-            },
-            { threshold: 0.1 },
-        )
-
-        if (img) observer.observe(img)
-    })
+    if (img) observer.observe(img)
+  })
 </script>

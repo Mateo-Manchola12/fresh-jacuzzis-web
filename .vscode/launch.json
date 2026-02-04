@@ -1,43 +1,39 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "command": "./node_modules/.bin/astro dev  --host",
-            "name": "Development server",
-            "request": "launch",
-            "type": "node-terminal"
-        },
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Abrir Opera GX",
-            "runtimeExecutable": "C:\\Users\\mmanc_o5lafv9\\AppData\\Local\\Programs\\Opera GX\\opera.exe",
-            "url": "http://localhost:55000",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "command": "ngrok http 55000",
-            "name": "Abrir ngrok",
-            "request": "launch",
-            "type": "node-terminal"
-        }
-    ],
-    "compounds": [
-        {
-            "name": "Iniciar Opera GX y ejecutar script",
-            "configurations": ["Development server", "Abrir Opera GX"]
-        },
-        {
-            "name": "Iniciar ngrok y ejecutar script",
-            "configurations": ["Development server", "Abrir ngrok"]
-        },
-        {
-            "name": "Iniciar Opera GX, ngrok y ejecutar script",
-            "configurations": [
-                "Development server",
-                "Abrir Opera GX",
-                "Abrir ngrok"
-            ]
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "./node_modules/.bin/astro dev  --host",
+      "name": "Development server",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Abrir Opera GX",
+      "runtimeExecutable": "C:\\Users\\mmanc_o5lafv9\\AppData\\Local\\Programs\\Opera GX\\opera.exe",
+      "url": "http://localhost:55000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "command": "ngrok http 55000",
+      "name": "Abrir ngrok",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Iniciar Opera GX y ejecutar script",
+      "configurations": ["Development server", "Abrir Opera GX"]
+    },
+    {
+      "name": "Iniciar ngrok y ejecutar script",
+      "configurations": ["Development server", "Abrir ngrok"]
+    },
+    {
+      "name": "Iniciar Opera GX, ngrok y ejecutar script",
+      "configurations": ["Development server", "Abrir Opera GX", "Abrir ngrok"]
+    }
+  ]
 }

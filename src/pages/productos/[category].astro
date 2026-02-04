@@ -1,71 +1,71 @@
 ---
-import Layout from "@layout"
-import products from "@hooks/products"
-import ProductCard from "@components/products/ProductCard.astro"
-import Banner from "@components/products/Banner.astro"
-import capitalizeFirstLetter from "@/lib/capitalizeFirstLetter"
-import type { Category, Product } from "@t/productTypes"
+import Layout from '@layout'
+import products from '@hooks/products'
+import ProductCard from '@components/products/ProductCard.astro'
+import Banner from '@components/products/Banner.astro'
+import capitalizeFirstLetter from '@/lib/capitalizeFirstLetter'
+import type { Category, Product } from '@t/productTypes'
 
 export function getStaticPaths() {
-    const ids = products.map((category) => category.category)
-    const params = ids.map((category) => {
-        return { params: { category } }
-    })
+  const ids = products.map((category) => category.category)
+  const params = ids.map((category) => {
+    return { params: { category } }
+  })
 
-    return [...params]
+  return [...params]
 }
 
 const { category } = Astro.params
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-    `/src/assets/products/* - Fresh Jacuzzis.{jpeg,jpg,png,gif}`,
+  `/src/assets/products/* - Fresh Jacuzzis.{jpeg,jpg,png,gif}`,
 )
 
 const categoryObject = products.find(({ category: id }) => id === category) as Category
 ---
 
 <Layout title="Productos">
-    <Banner
-        data-category={{
-            category: categoryObject.category,
-            title: categoryObject.title,
-            description: categoryObject.description,
-        }}
-    />
-    <section>
-        {
-            categoryObject.products
-                .filter(({ visibility, availability }) => visibility && availability)
-                .map(async (product: Product, index: number) => {
-                    const image =
-                        await images[
-                            `/src/assets/products/${capitalizeFirstLetter(product.category)} ${product.name} - Fresh Jacuzzis.jpeg`
-                        ]()
+  <Banner
+    data-category={{
+      category: categoryObject.category,
+      title: categoryObject.title,
+      description: categoryObject.description,
+    }}
+  />
+  <section>
+    {
+      categoryObject.products
+        .filter(({ visibility, availability }) => visibility && availability)
+        .map(async (product: Product, index: number) => {
+          const image =
+            await images[
+              `/src/assets/products/${capitalizeFirstLetter(product.category)} ${product.name} - Fresh Jacuzzis.jpeg`
+            ]()
 
-                    return (
-                        <ProductCard
-                            firstView={index < 2}
-                            id={product.id}
-                            product={product}
-                            category={category}
-                            img={image?.default}
-                            dataAos={{
-                                "data-aos": "fade-up",
-                                "data-aos-delay": index * 100,
-                            }}
-                        />
-                    )
-                })
-        }
-    </section>
+          return (
+            <ProductCard
+              firstView={index < 2}
+              id={product.id}
+              product={product}
+              category={category}
+              img={image?.default}
+              dataAos={{
+                'data-aos': 'fade-up',
+                'data-aos-delay': index * 100,
+              }}
+            />
+          )
+        })
+    }
+  </section>
 </Layout>
 <style>
-    section {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: space-around;
-        margin: 20px auto;
-    }
+  section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-around;
+    margin: 20px auto;
+  }
 </style>

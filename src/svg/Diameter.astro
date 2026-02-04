@@ -1,38 +1,32 @@
 ---
 interface Props {
-    size: number;
-    className?: string;
+  size: number
+  className?: string
 }
 
-const { size, className } = Astro.props;
+const { size, className } = Astro.props
 ---
 
-<svg
-    class:list={[className]}
-    width={size}
-    height={size}
-    aria-hidden="true"
-    viewBox="0 0 24 24"
->
-    <circle
-        cx="12"
-        cy="12"
-        r="9"
-        style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"
-    ></circle>
-    <polyline
-        points="16 13 17 12 16 11"
-        style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"
-    ></polyline>
-    <polyline
-        points="8 11 7 12 8 13"
-        style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"
-    ></polyline>
-    <line
-        x1="7"
-        y1="12"
-        x2="17"
-        y2="12"
-        style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"
-    ></line>
+<svg class:list={[className]} width={size} height={size} aria-hidden="true" viewBox="0 0 24 24">
+  <circle
+    cx="12"
+    cy="12"
+    r="9"
+    style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"
+  ></circle>
+  <polyline
+    points="16 13 17 12 16 11"
+    style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"
+  ></polyline>
+  <polyline
+    points="8 11 7 12 8 13"
+    style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"
+  ></polyline>
+  <line
+    x1="7"
+    y1="12"
+    x2="17"
+    y2="12"
+    style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"
+  ></line>
 </svg>
