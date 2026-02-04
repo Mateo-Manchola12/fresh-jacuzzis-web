@@ -1,122 +1,118 @@
 ---
-import { SITE_MAP } from "@constants/site_map"
-import { CONTACT_METHODS } from "@constants/contact_methods"
-import FooterSiteMap from "./FooterSiteMap.astro"
+import { SITE_MAP } from '@constants/site_map'
+import { CONTACT_METHODS } from '@constants/contact_methods'
+import FooterSiteMap from './FooterSiteMap.astro'
 ---
 
 <footer role="contentinfo" aria-labelledby="footer-heading" data-aos="fade-up" class="footer">
-    <h2 id="footer-heading" class="sr-only">Fresh HidroJacuzz</h2>
-    <div class="footer-container">
-        <div class="company-info">
-            <h3>Fresh HidroJacuzz</h3>
-            <p><strong>Dirección:</strong> Calle 93b sur # 50- 231</p>
-            {
-                CONTACT_METHODS.filter(({ type }) => type === "direct").map(
-                    ({ name, link, value }) => (
-                        <p>
-                            <strong>{name}</strong>
-                            <a href={link} aria-label={`Conatacta al ${name} de Fresh HidroJacuzz`}>
-                                {value}
-                            </a>
-                        </p>
-                    ),
-                )
-            }
-        </div>
-        <div class="site-map" aria-label="Mapa del sitio">
-            <h3>Mapa del Sitio</h3>
-            <ul>
-                <FooterSiteMap pages={SITE_MAP} />
-            </ul>
-        </div>
-        <div class="social-media" aria-label="Redes sociales">
-            <h3>Síguenos</h3>
-            <ul>
-                {
-                    CONTACT_METHODS.filter(({ type }) => type === "external").map(
-                        ({ name, link }) => (
-                            <li>
-                                <a href={link} aria-label={`Ir a el ${name} de Fresh HidroJacuzz`}>
-                                    {name}
-                                </a>
-                            </li>
-                        ),
-                    )
-                }
-            </ul>
-        </div>
-        <div class="privacy-policy">
-            <a href="/politica-privacidad" aria-label="Leer política de privacidad"
-                >Política de Privacidad</a
-            >
-        </div>
+  <h2 id="footer-heading" class="sr-only">Fresh HidroJacuzz</h2>
+  <div class="footer-container">
+    <div class="company-info">
+      <h3>Fresh HidroJacuzz</h3>
+      <p><strong>Dirección:</strong> Calle 93b sur # 50- 231</p>
+      {
+        CONTACT_METHODS.filter(({ type }) => type === 'direct').map(({ name, link, value }) => (
+          <p>
+            <strong>{name}</strong>
+            <a href={link} aria-label={`Conatacta al ${name} de Fresh HidroJacuzz`}>
+              {value}
+            </a>
+          </p>
+        ))
+      }
     </div>
-    <p class="footer-bottom" aria-live="polite">
-        Fresh HidroJacuzz © 2025, Designed by Mateo Manchola
-    </p>
+    <div class="site-map" aria-label="Mapa del sitio">
+      <h3>Mapa del Sitio</h3>
+      <ul>
+        <FooterSiteMap pages={SITE_MAP} />
+      </ul>
+    </div>
+    <div class="social-media" aria-label="Redes sociales">
+      <h3>Síguenos</h3>
+      <ul>
+        {
+          CONTACT_METHODS.filter(({ type }) => type === 'external').map(({ name, link }) => (
+            <li>
+              <a href={link} aria-label={`Ir a el ${name} de Fresh HidroJacuzz`}>
+                {name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="privacy-policy">
+      <a href="/politica-privacidad" aria-label="Leer política de privacidad"
+        >Política de Privacidad</a
+      >
+    </div>
+  </div>
+  <p class="footer-bottom" aria-live="polite">
+    Fresh HidroJacuzz © 2025, Designed by Mateo Manchola
+  </p>
 </footer>
 
 <style>
-    .footer {
-        background-color: var(--primary-dark);
-        color: var(--accent-light);
-        padding: 2rem;
-        text-align: center;
-        width: 100%;
-    }
+  .footer {
+    background-color: var(--primary-dark);
+    color: var(--accent-light);
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+  }
 
-    .footer-container {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 
-    .footer-container div {
-        flex: 1;
-        min-width: 250px;
-        margin: 1rem 0;
-    }
+  .footer-container div {
+    flex: 1;
+    min-width: 250px;
+    margin: 1rem 0;
+  }
 
-    .footer :global(h3) {
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
-        color: var(--accent-light);
-    }
+  .footer :global(h3) {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--accent-light);
+  }
 
-    .footer :global(p),
-    .footer :global(a) {
-        color: var(--accent-light);
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
+  .footer :global(p),
+  .footer :global(a) {
+    color: var(--accent-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
 
-    .footer :global(a) {
-        text-decoration: none;
-        color: var(--accent-color);
-    }
+  .footer :global(a) {
+    text-decoration: none;
+    color: var(--accent-color);
+  }
 
-    .footer :global(a):hover {
-        text-decoration: underline;
-    }
+  .footer :global(a):hover {
+    text-decoration: underline;
+  }
 
-    .footer-bottom {
-        margin-top: 2rem;
-        font-size: 0.8rem;
-        color: var(--accent-light);
-    }
+  .footer-bottom {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--accent-light);
+  }
 
-    .social-media ul,
-    .site-map :global(ul) {
-        list-style: none;
-        padding: 0;
-    }
+  .social-media ul,
+  .site-map :global(ul) {
+    list-style: none;
+    padding: 0;
+  }
 
-    .site-map > :global(ul > li > a) {
-        font-weight: bolder;
-    }
-    .social-media ul li,
-    .site-map :global(ul li) {
-        margin: 0.5rem 0;
-    }
+  .site-map > :global(ul > li > a) {
+    font-weight: bolder;
+  }
+  .social-media ul li,
+  .site-map :global(ul li) {
+    margin: 0.5rem 0;
+  }
 </style>

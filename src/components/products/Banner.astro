@@ -1,36 +1,36 @@
 ---
 interface Props {
-    "data-category": {
-        category: string
-        title: string
-        description: string
-    }
+  'data-category': {
+    category: string
+    title: string
+    description: string
+  }
 }
 
-const { "data-category": category } = Astro.props
+const { 'data-category': category } = Astro.props
 ---
 
 <section>
-    <h1>{category.title}</h1>
-    <p>
-        {category.description}
-    </p>
+  <h1>{category.title}</h1>
+  <p>
+    {category.description}
+  </p>
 </section>
 <style>
-    section {
-        font-size: medium;
-        margin-top: 0;
-        background: linear-gradient(#00000099, #00000099), var(--primary-dark);
-        color: var(--accent-color);
-        padding: 3rem;
-    }
-    h1 {
-        margin-bottom: 1.3rem;
-    }
+  section {
+    font-size: medium;
+    margin-top: 0;
+    background: linear-gradient(#00000099, #00000099), var(--primary-dark);
+    color: var(--accent-color);
+    padding: 3rem;
+  }
+  h1 {
+    margin-bottom: 1.3rem;
+  }
 
-    @media (min-width: 800px) {
-        section {
-            font-size: large;
-        }
+  @media (min-width: 800px) {
+    section {
+      font-size: large;
     }
+  }
 </style>

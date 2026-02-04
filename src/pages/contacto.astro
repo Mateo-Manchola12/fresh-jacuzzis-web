@@ -1,19 +1,19 @@
 ---
-import ContactForm from "@components/ContactForm.astro";
-import Layout from "@layout";
+import ContactForm from '@components/ContactForm.astro'
+import Layout from '@layout'
 
-import photo from "@assets/banner-jacuzzi-woman.jpg";
-import ContactMethods from "@components/contact/ContactMethods.astro";
-import Map from "@components/contact/Map.astro";
+import photo from '@assets/banner-jacuzzi-woman.jpg'
+import ContactMethods from '@components/contact/ContactMethods.astro'
+import Map from '@components/contact/Map.astro'
 ---
 
 <Layout title="Contáctanos">
-    <ContactForm src={photo} dataAos={{}} classNames="contact-form" />
-    <ContactMethods />
-    <Map />
+  <ContactForm src={photo} dataAos={{}} classNames="contact-form" />
+  <ContactMethods />
+  <Map />
 </Layout>
 <style>
-    :global(section.contact-form) {
-        margin: 0;
-    }
+  :global(section.contact-form) {
+    margin: 0;
+  }
 </style>

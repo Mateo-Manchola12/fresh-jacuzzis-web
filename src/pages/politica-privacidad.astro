@@ -1,50 +1,43 @@
 ---
-import { CONTACT_METHODS } from "@constants/contact_methods";
-import Layout from "@layout";
+import { CONTACT_METHODS } from '@constants/contact_methods'
+import Layout from '@layout'
 ---
 
 <Layout title="Política de privacidad">
-    <section>
-        <h1>Política de privacidad</h1>
-        <p>
-            Autorización para el Tratamiento de Datos Personales De conformidad
-            con lo dispuesto en la Ley 1581 de 2012 y el Decreto 1377 de 2013,
-            autorizo de manera previa, expresa e informada a Fresh Jacuzzi Sas,
-            identificado con NIT 901798454, para que recolecte, almacene, use,
-            circule y suprima mis datos personales con las siguientes
-            finalidades:
-        </p>
-        <ul>
-            <li>
-                Gestionar procesos de contacto, cotización, compra, envío,
-                atención al cliente o cualquier otra relación comercial.
-            </li>
-            <li>
-                Enviar información promocional, publicitaria o relacionada con
-                productos, servicios, eventos o contenidos de interés. • Cumplir
-                con obligaciones legales y contractuales.
-            </li>
-            <li>
-                Realizar estudios de mercado, análisis internos y mejorar la
-                experiencia del usuario.
-            </li>
-        </ul>
-        <p></p>Entiendo que mis datos personales serán tratados de manera segura
-        y confidencial, y que como titular tengo derecho a conocer, actualizar,
-        rectificar y suprimir mi información, así como revocar la autorización
-        otorgada, enviando una solicitud al correo electrónico: {
-            CONTACT_METHODS.find((e) => e.name === "Correo")?.value
-        }
-    </section>
+  <section>
+    <h1>Política de privacidad</h1>
+    <p>
+      Autorización para el Tratamiento de Datos Personales De conformidad con lo dispuesto en la Ley
+      1581 de 2012 y el Decreto 1377 de 2013, autorizo de manera previa, expresa e informada a Fresh
+      Jacuzzi Sas, identificado con NIT 901798454, para que recolecte, almacene, use, circule y
+      suprima mis datos personales con las siguientes finalidades:
+    </p>
+    <ul>
+      <li>
+        Gestionar procesos de contacto, cotización, compra, envío, atención al cliente o cualquier
+        otra relación comercial.
+      </li>
+      <li>
+        Enviar información promocional, publicitaria o relacionada con productos, servicios, eventos
+        o contenidos de interés. • Cumplir con obligaciones legales y contractuales.
+      </li>
+      <li>Realizar estudios de mercado, análisis internos y mejorar la experiencia del usuario.</li>
+    </ul>
+    <p></p>Entiendo que mis datos personales serán tratados de manera segura y confidencial, y que
+    como titular tengo derecho a conocer, actualizar, rectificar y suprimir mi información, así como
+    revocar la autorización otorgada, enviando una solicitud al correo electrónico: {
+      CONTACT_METHODS.find((e) => e.name === 'Correo')?.value
+    }
+  </section>
 </Layout>
 <style>
-    p {
-        margin-bottom: 1rem;
-    }
-    section {
-        padding: 1rem;
-    }
-    ul {
-        list-style-position: inside;
-    }
+  p {
+    margin-bottom: 1rem;
+  }
+  section {
+    padding: 1rem;
+  }
+  ul {
+    list-style-position: inside;
+  }
 </style>
