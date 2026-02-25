@@ -13,6 +13,12 @@ export const CONTACT_METHODS: ContactMethod[] = [
     type: 'direct',
   },
   {
+    name: 'Teléfono',
+    value: '322 918 16 69',
+    link: 'tel:3229181669',
+    type: 'direct',
+  },
+  {
     name: 'WhatsApp',
     value: '+57 312 6799235',
     link: 'https://wa.me/573126799235',
